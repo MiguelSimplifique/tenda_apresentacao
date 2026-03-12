@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apresentação Técnica-Estratégica | SDR AI — Tenda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #FFFFFF;
+  --bg-soft: #F8F9FC;
+  --bg-card-gradient: linear-gradient(135deg, #EDE8F8 0%, #F5F0FF 50%, #FDE8F0 100%);
+  --border: rgba(30,42,74,0.08);
+  --accent: #D4186C;
+  --accent-light: rgba(212,24,108,0.08);
+  --accent-lighter: rgba(212,24,108,0.04);
+  --navy: #1E2A4A;
+  --navy-light: #2D3E63;
+  --text: #1E2A4A;
+  --text-body: #6B7280;
+  --text-dim: #9CA3AF;
+  --font: 'DM Sans', sans-serif;
+  --hero-gradient: linear-gradient(135deg, #C7D2FE 0%, #A78BFA 25%, #C084FC 50%, #D4188A 75%, #E060B0 100%);
+  --hot: #D4186C;
+  --warm: #D97706;
+  --cold: #6B7280;
+}
+
+html { scroll-behavior: smooth; background: var(--bg); color: var(--text); font-family: var(--font); font-size: 16px; line-height: 1.6; }
+body { background: var(--bg); overflow-x: hidden; }
+
+/* NAVBAR */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem; height: 56px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.navbar-logo { font-weight: 700; font-size: 1.05rem; color: var(--navy); letter-spacing: -0.02em; }
+.navbar-logo span { color: var(--accent); }
+.navbar-links { display: flex; gap: 1.5rem; list-style: none; }
+.navbar-links a { color: var(--text-body); text-decoration: none; font-size: 0.82rem; font-weight: 500; transition: color 0.3s; }
+.navbar-links a:hover { color: var(--navy); }
+
+/* PROGRESS BAR */
+.progress-bar {
+  position: fixed; right: 1.5rem; top: 50%; transform: translateY(-50%); z-index: 99;
+  display: flex; flex-direction: column; gap: 0.5rem; align-items: center;
+}
+.progress-dot {
+  width: 8px; height: 8px; border-radius: 50%; background: var(--text-dim);
+  transition: all 0.4s; cursor: pointer; opacity: 0.4;
+}
+.progress-dot.active {
+  background: var(--accent); box-shadow: 0 0 10px rgba(212,24,108,0.35);
+  transform: scale(1.4); opacity: 1;
+}
+
+/* SECTIONS */
+section {
+  min-height: 100vh; padding: 8rem 2rem 4rem; max-width: 1120px; margin: 0 auto;
+  opacity: 1; transform: translateY(0);
+}
+section.visible { opacity: 1; transform: translateY(0); }
+
+.section-label {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem;
+}
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; letter-spacing: -0.03em;
+  line-height: 1.15; color: var(--navy); margin-bottom: 0.5rem;
+}
+.section-title .dot { color: var(--accent); }
+.section-subtitle { color: var(--text-body); font-size: 1rem; margin-bottom: 2.5rem; max-width: 560px; }
+
+/* HERO */
+#hero {
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  text-align: center; min-height: 100vh; padding-top: 56px;
+  background: var(--hero-gradient); max-width: 100%; position: relative; overflow: hidden;
+}
+#hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 120%, rgba(255,255,255,0.5) 0%, transparent 70%);
+}
+#hero > * { position: relative; z-index: 1; }
+.hero-logo-img { height: 36px; margin-bottom: 1.5rem; filter: brightness(0) saturate(100%); opacity: 0.85; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(255,255,255,0.25); backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.35); color: var(--navy);
+  padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.72rem;
+  font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 2.5rem;
+}
+.hero-title {
+  font-size: clamp(2.5rem, 6vw, 4.2rem); font-weight: 800; letter-spacing: -0.04em;
+  line-height: 1.05; color: var(--navy); margin-bottom: 1rem;
+}
+.hero-desc {
+  color: var(--navy-light); font-size: 1.1rem; max-width: 520px;
+  margin-bottom: 0.75rem; line-height: 1.65; font-weight: 400;
+}
+.hero-agenda {
+  background: rgba(255,255,255,0.3); backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.45); border-radius: 16px;
+  padding: 1.2rem 2rem; margin-bottom: 2.5rem; max-width: 580px; text-align: left;
+}
+.hero-agenda-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy); opacity: 0.6; margin-bottom: 0.6rem; }
+.hero-agenda-items { display: flex; flex-direction: column; gap: 0.35rem; }
+.hero-agenda-item { font-size: 0.82rem; color: var(--navy); font-weight: 500; display: flex; align-items: center; gap: 0.5rem; }
+.hero-agenda-item::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+.hero-pills { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; }
+.pill {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  background: rgba(255,255,255,0.5); backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.5); color: var(--navy);
+  padding: 0.5rem 1.1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600;
+}
+.pill .check {
+  width: 18px; height: 18px; background: var(--navy); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.pill .check svg { width: 10px; height: 10px; }
+
+/* SISTEMA / PROBLEMA */
+.problema-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+.problema-card {
+  background: var(--bg-soft); border: 1px solid var(--border); border-radius: 16px;
+  padding: 1.75rem 1.5rem; text-align: center;
+}
+.problema-card .number { font-size: 2.4rem; font-weight: 800; color: var(--accent); line-height: 1; margin-bottom: 0.4rem; letter-spacing: -0.03em; }
+.problema-card .label { color: var(--text-body); font-size: 0.82rem; font-weight: 500; }
+.problema-highlight {
+  background: linear-gradient(135deg, rgba(212,24,108,0.06) 0%, rgba(212,24,108,0.02) 100%);
+  border: 1px solid rgba(212,24,108,0.18); border-radius: 14px; padding: 1.2rem 1.5rem;
+  display: flex; align-items: center; gap: 0.75rem; margin-bottom: 2.5rem;
+}
+.problema-highlight strong { color: var(--accent); font-weight: 700; font-size: 0.9rem; }
+.problema-highlight span { color: var(--text-body); font-size: 0.9rem; }
+
+.comparison-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+.comparison-table th { background: var(--navy); color: #fff; padding: 0.85rem 1.2rem; text-align: left; font-size: 0.82rem; font-weight: 600; }
+.comparison-table th:first-child { border-radius: 12px 0 0 0; }
+.comparison-table th:last-child { border-radius: 0 12px 0 0; }
+.comparison-table td { padding: 0.8rem 1.2rem; font-size: 0.88rem; color: var(--text-body); border-bottom: 1px solid var(--border); }
+.comparison-table tr:last-child td { border-bottom: none; }
+.comparison-table tr:nth-child(even) td { background: var(--bg-soft); }
+.comparison-table .val-atual { color: var(--text-dim); }
+.comparison-table .val-ia { color: var(--navy); font-weight: 600; }
+.comparison-table .val-ia .hot { color: var(--accent); }
+
+.metric-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+.metric-card {
+  background: var(--bg-card-gradient); border: 1px solid var(--border); border-radius: 16px;
+  padding: 2rem 1.5rem; text-align: center; transition: transform 0.3s, box-shadow 0.3s;
+}
+.metric-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(30,42,74,0.08); }
+.metric-card .number { font-size: 2.6rem; font-weight: 800; color: var(--navy); line-height: 1; margin-bottom: 0.5rem; letter-spacing: -0.03em; }
+.metric-card .label { color: var(--text-body); font-size: 0.85rem; font-weight: 500; }
+
+/* JORNADA / STEPS */
+.steps-flow {
+  display: flex; align-items: center; gap: 0; margin-bottom: 3rem; flex-wrap: wrap;
+  background: var(--bg-soft); border: 1px solid var(--border); border-radius: 20px; padding: 1.5rem 2rem;
+}
+.step-node {
+  display: flex; flex-direction: column; align-items: center; gap: 0.3rem;
+  flex: 1; min-width: 90px; cursor: default;
+}
+.step-circle {
+  width: 44px; height: 44px; border-radius: 50%; background: var(--accent);
+  color: #fff; font-weight: 800; font-size: 0.85rem;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.step-node:hover .step-circle { transform: scale(1.12); box-shadow: 0 4px 16px rgba(212,24,108,0.35); }
+.step-label { font-size: 0.72rem; font-weight: 600; color: var(--navy); text-align: center; line-height: 1.3; }
+.step-arrow { color: var(--text-dim); font-size: 1.2rem; flex-shrink: 0; padding: 0 0.25rem; }
+
+.timeline { position: relative; margin-top: 0; }
+.timeline::before {
+  content: ''; position: absolute; left: 24px; top: 0; bottom: 0; width: 2px;
+  background: linear-gradient(to bottom, var(--accent), #A78BFA, var(--accent)); opacity: 0.2;
+}
+.timeline-item { position: relative; padding-left: 64px; padding-bottom: 2rem; }
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-number {
+  position: absolute; left: 8px; top: 0; width: 34px; height: 34px; border-radius: 50%;
+  background: var(--accent); color: #fff; font-weight: 700; font-size: 0.85rem;
+  display: flex; align-items: center; justify-content: center;
+}
+.timeline-title { font-weight: 700; font-size: 1.05rem; color: var(--navy); margin-bottom: 0.3rem; display: flex; align-items: center; gap: 0.75rem; }
+.timeline-desc { color: var(--text-body); font-size: 0.88rem; line-height: 1.65; margin-bottom: 0.5rem; }
+.timeline-chip {
+  display: inline-block; background: var(--bg-soft); border: 1px solid var(--border);
+  color: var(--text-dim); padding: 0.2rem 0.65rem; border-radius: 6px; font-size: 0.7rem; font-weight: 500; margin-right: 0.4rem;
+}
+.btn-example {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: var(--accent); color: #fff; border: none; border-radius: 8px;
+  padding: 0.35rem 0.9rem; font-size: 0.75rem; font-weight: 600; cursor: pointer;
+  transition: background 0.2s, transform 0.15s; margin-top: 0.5rem;
+}
+.btn-example:hover { background: #c91040; transform: translateY(-1px); }
+.btn-example svg { width: 12px; height: 12px; }
+
+/* MODALS / OVERLAYS */
+.modal-overlay {
+  display: flex; position: fixed; inset: 0; z-index: 99999;
+  background: rgba(10,15,35,0.6); backdrop-filter: blur(6px);
+  align-items: center; justify-content: center; padding: 2rem;
+  visibility: hidden; opacity: 0; transition: opacity 0.25s ease, visibility 0.25s ease;
+  pointer-events: none;
+}
+.modal-overlay.open { visibility: visible; opacity: 1; pointer-events: all; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.modal-box {
+  background: #fff; border-radius: 24px; max-width: 680px; width: 100%;
+  max-height: 85vh; overflow-y: auto; padding: 2.5rem;
+  box-shadow: 0 24px 80px rgba(10,15,35,0.25); animation: slideUp 0.3s ease;
+  position: relative;
+}
+@keyframes slideUp { from { transform: translateY(24px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.modal-close {
+  position: absolute; top: 1.2rem; right: 1.2rem;
+  width: 32px; height: 32px; border-radius: 50%; background: var(--bg-soft);
+  border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  color: var(--text-dim); font-size: 1.1rem; transition: background 0.2s;
+}
+.modal-close:hover { background: var(--border); }
+.modal-title { font-size: 1.15rem; font-weight: 800; color: var(--navy); margin-bottom: 0.25rem; }
+.modal-sub { font-size: 0.82rem; color: var(--text-dim); margin-bottom: 1.5rem; }
+
+/* CHAT UI */
+.chat-window {
+  background: #F0F2F5; border-radius: 16px; padding: 1.2rem; display: flex; flex-direction: column; gap: 0.75rem;
+  max-height: 420px; overflow-y: auto;
+}
+.chat-msg { display: flex; flex-direction: column; max-width: 80%; }
+.chat-msg.ia { align-self: flex-start; }
+.chat-msg.lead { align-self: flex-end; align-items: flex-end; }
+.chat-bubble {
+  padding: 0.6rem 1rem; border-radius: 16px; font-size: 0.85rem; line-height: 1.55;
+}
+.chat-msg.ia .chat-bubble { background: #fff; color: var(--navy); border-bottom-left-radius: 4px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+.chat-msg.lead .chat-bubble { background: var(--navy); color: #fff; border-bottom-right-radius: 4px; }
+.chat-sender { font-size: 0.67rem; font-weight: 700; color: var(--text-dim); margin-bottom: 0.15rem; text-transform: uppercase; letter-spacing: 0.04em; }
+.chat-msg.ia .chat-sender { color: var(--accent); }
+.chat-result {
+  background: linear-gradient(135deg, rgba(212,24,108,0.06), rgba(167,139,250,0.06));
+  border: 1px solid rgba(212,24,108,0.2); border-radius: 12px; padding: 1rem 1.2rem; margin-top: 0.75rem;
+  font-size: 0.85rem; color: var(--navy);
+}
+.chat-result strong { color: var(--accent); }
+
+/* SCORE MODAL */
+.score-flow { display: flex; flex-direction: column; gap: 1rem; }
+.score-step {
+  display: flex; gap: 1rem; align-items: flex-start;
+  background: var(--bg-soft); border: 1px solid var(--border); border-radius: 14px; padding: 1.2rem;
+}
+.score-step-icon {
+  width: 38px; height: 38px; border-radius: 10px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+}
+.score-step-icon.blue { background: rgba(167,139,250,0.15); }
+.score-step-icon.green { background: rgba(16,185,129,0.1); }
+.score-step-icon.red { background: var(--accent-light); }
+.score-step-body h4 { font-weight: 700; font-size: 0.92rem; color: var(--navy); margin-bottom: 0.2rem; }
+.score-step-body p { font-size: 0.82rem; color: var(--text-body); line-height: 1.55; }
+.score-bar-wrap { margin-top: 1rem; }
+.score-bar-label { display: flex; justify-content: space-between; font-size: 0.75rem; font-weight: 600; color: var(--navy); margin-bottom: 0.4rem; }
+.score-bar-track { height: 10px; background: var(--border); border-radius: 100px; overflow: hidden; }
+.score-bar-fill { height: 100%; border-radius: 100px; transition: width 1s ease; }
+.score-bar-fill.hot { background: linear-gradient(90deg, #D4186C, #F472B6); }
+.score-bar-fill.warm { background: linear-gradient(90deg, #D97706, #F59E0B); }
+.score-bar-fill.cold { background: linear-gradient(90deg, #6B7280, #9CA3AF); }
+.classification-chips { display: flex; gap: 0.5rem; margin-top: 1rem; flex-wrap: wrap; }
+.chip-class {
+  padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.78rem; font-weight: 700;
+  display: flex; align-items: center; gap: 0.4rem;
+}
+.chip-class.hot { background: rgba(212,24,108,0.1); color: var(--accent); border: 1px solid rgba(212,24,108,0.25); }
+.chip-class.warm { background: rgba(217,119,6,0.1); color: var(--warm); border: 1px solid rgba(217,119,6,0.2); }
+.chip-class.cold { background: rgba(107,114,128,0.08); color: var(--cold); border: 1px solid rgba(107,114,128,0.15); }
+
+/* KANBAN */
+.kanban-board { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2rem; }
+.kanban-col { display: flex; flex-direction: column; gap: 0.75rem; }
+.kanban-header {
+  display: flex; align-items: center; gap: 0.5rem; padding: 0.6rem 0.8rem;
+  border-radius: 10px; font-size: 0.78rem; font-weight: 700;
+}
+.kanban-header.hot { background: rgba(212,24,108,0.08); color: var(--accent); border: 1px solid rgba(212,24,108,0.15); }
+.kanban-header.warm { background: rgba(217,119,6,0.08); color: var(--warm); border: 1px solid rgba(217,119,6,0.15); }
+.kanban-header.attending { background: rgba(16,185,129,0.08); color: #059669; border: 1px solid rgba(16,185,129,0.15); }
+.kanban-header.sold { background: rgba(107,114,128,0.07); color: #374151; border: 1px solid rgba(107,114,128,0.12); }
+.kanban-count { background: rgba(0,0,0,0.08); border-radius: 100px; padding: 0.1rem 0.5rem; font-size: 0.68rem; margin-left: auto; }
+.lead-card {
+  background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 1rem;
+  cursor: pointer; transition: box-shadow 0.2s, transform 0.15s; border-left: 3px solid transparent;
+}
+.lead-card:hover { box-shadow: 0 4px 18px rgba(30,42,74,0.1); transform: translateY(-1px); }
+.lead-card.hot { border-left-color: var(--accent); }
+.lead-card.warm { border-left-color: var(--warm); }
+.lead-card.attending { border-left-color: #10B981; }
+.lead-card.sold { border-left-color: #6B7280; }
+.lead-card-name { font-weight: 700; font-size: 0.88rem; color: var(--navy); margin-bottom: 0.2rem; }
+.lead-card-detail { font-size: 0.75rem; color: var(--text-body); }
+.lead-card-score {
+  display: inline-block; border-radius: 6px; padding: 0.15rem 0.5rem; font-size: 0.72rem; font-weight: 800; margin-top: 0.4rem;
+}
+.lead-card-score.hot { background: rgba(212,24,108,0.1); color: var(--accent); }
+.lead-card-score.warm { background: rgba(217,119,6,0.1); color: var(--warm); }
+.lead-card-score.attending { background: rgba(16,185,129,0.1); color: #059669; }
+.lead-card-score.sold { background: rgba(107,114,128,0.08); color: #374151; }
+
+/* LEAD DETAIL MODAL */
+.lead-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem; }
+.lead-detail-field { background: var(--bg-soft); border: 1px solid var(--border); border-radius: 10px; padding: 0.75rem 1rem; }
+.lead-detail-field label { font-size: 0.67rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 0.2rem; }
+.lead-detail-field value { font-size: 0.88rem; font-weight: 600; color: var(--navy); }
+.lead-score-display {
+  display: flex; align-items: center; gap: 1.25rem; background: var(--bg-card-gradient);
+  border: 1px solid var(--border); border-radius: 14px; padding: 1.1rem 1.5rem; margin-bottom: 1.25rem;
+}
+.lead-score-num { font-size: 3rem; font-weight: 800; color: var(--accent); line-height: 1; letter-spacing: -0.04em; }
+.lead-score-info h4 { font-weight: 700; font-size: 1rem; color: var(--navy); }
+.lead-score-info p { font-size: 0.8rem; color: var(--text-body); }
+.lead-summary-box, .lead-abordagem-box {
+  border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 0.75rem;
+}
+.lead-summary-box { background: var(--bg-soft); border: 1px solid var(--border); }
+.lead-abordagem-box { background: rgba(212,24,108,0.04); border: 1px solid rgba(212,24,108,0.15); }
+.lead-summary-box h4, .lead-abordagem-box h4 { font-size: 0.72rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.5rem; }
+.lead-summary-box p, .lead-abordagem-box p { font-size: 0.85rem; color: var(--text-body); line-height: 1.6; }
+.lead-abordagem-box p { color: var(--navy); font-weight: 500; }
+
+/* PLATFORM */
+.platform-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+.platform-card {
+  background: var(--bg-soft); border: 1px solid var(--border); border-radius: 20px;
+  padding: 2.5rem 2rem; transition: box-shadow 0.3s;
+}
+.platform-card:hover { box-shadow: 0 8px 30px rgba(30,42,74,0.06); }
+.platform-card-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.3rem; }
+.platform-icon {
+  width: 42px; height: 42px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.platform-icon.front { background: var(--accent-light); }
+.platform-icon.back { background: rgba(167,139,250,0.1); }
+.platform-card h3 { font-weight: 700; font-size: 1.05rem; color: var(--navy); }
+.platform-card .card-sub { color: var(--text-dim); font-size: 0.8rem; margin-bottom: 1.5rem; padding-left: 54px; }
+.platform-list { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+.platform-list li { color: var(--text-body); font-size: 0.88rem; padding-left: 1.4rem; position: relative; line-height: 1.55; }
+.platform-list li::before { content: ''; position: absolute; left: 0; top: 9px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); opacity: 0.6; }
+.platform-tech { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--text-dim); font-size: 0.75rem; font-weight: 500; }
+
+/* SECURITY */
+.security-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+.security-card {
+  background: var(--bg-soft); border: 1px solid var(--border); border-radius: 16px;
+  padding: 2rem 1.5rem; transition: box-shadow 0.3s;
+}
+.security-card:hover { box-shadow: 0 6px 24px rgba(30,42,74,0.06); }
+.security-card .card-icon {
+  width: 38px; height: 38px; border-radius: 10px; background: var(--accent-light);
+  display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;
+}
+.security-card h3 { font-weight: 700; font-size: 1rem; color: var(--navy); margin-bottom: 1rem; }
+.security-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.security-card ul li { color: var(--text-body); font-size: 0.85rem; padding-left: 1.2rem; position: relative; line-height: 1.55; }
+.security-card ul li::before { content: '✓'; position: absolute; left: 0; color: var(--navy); font-weight: 700; font-size: 0.75rem; }
+.partners-bar { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 0.75rem; letter-spacing: 0.02em; }
+
+/* DISPONIBILIDADE */
+.dispo-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 2rem; }
+.dispo-card {
+  background: var(--bg-card-gradient); border: 1px solid var(--border); border-radius: 16px;
+  padding: 1.8rem 1.5rem; text-align: center; transition: transform 0.3s;
+}
+.dispo-card:hover { transform: translateY(-2px); }
+.dispo-card .number { font-size: 2.2rem; font-weight: 800; color: var(--navy); line-height: 1; margin-bottom: 0.4rem; letter-spacing: -0.02em; }
+.dispo-card .label { color: var(--text-body); font-size: 0.82rem; }
+.golive-timeline { margin-top: 3rem; }
+.golive-title { font-weight: 700; font-size: 1.1rem; color: var(--navy); margin-bottom: 1.5rem; }
+.golive-phases { display: flex; flex-direction: column; gap: 0.75rem; }
+.golive-phase {
+  display: flex; align-items: center; gap: 1rem; background: var(--bg-soft);
+  border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem 1.5rem;
+}
+.golive-phase .phase-badge {
+  flex-shrink: 0; background: var(--accent); color: #fff; font-weight: 700;
+  font-size: 0.72rem; padding: 0.25rem 0.75rem; border-radius: 6px; white-space: nowrap;
+}
+.golive-phase .phase-text { color: var(--text-body); font-size: 0.88rem; line-height: 1.5; }
+.golive-phase .phase-text strong { color: var(--navy); }
+
+/* PRÓXIMOS PASSOS */
+.checklist { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 2rem; max-width: 580px; }
+.checklist-item {
+  display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem;
+  background: var(--bg-soft); border: 1px solid var(--border); border-radius: 12px;
+  font-size: 0.9rem; color: var(--text-body); transition: border-color 0.3s;
+}
+.checklist-item.current {
+  border-color: var(--accent); border-width: 2px; background: var(--accent-lighter);
+  color: var(--navy); font-weight: 600;
+}
+.checklist-circle {
+  width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--text-dim);
+  flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+}
+.checklist-item.current .checklist-circle { border-color: var(--accent); background: var(--accent); }
+.checklist-item.current .checklist-circle::after { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #fff; }
+.current-tag { font-size: 0.7rem; color: var(--accent); font-weight: 700; margin-left: auto; white-space: nowrap; }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .kanban-board { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  section { padding: 6rem 1.2rem 3rem; }
+  .navbar-links { display: none; }
+  .progress-bar { right: 0.5rem; }
+  .progress-dot { width: 6px; height: 6px; }
+  .platform-grid { grid-template-columns: 1fr; }
+  .security-grid { grid-template-columns: 1fr; }
+  .metric-cards { grid-template-columns: repeat(2, 1fr); }
+  .dispo-metrics { grid-template-columns: repeat(2, 1fr); }
+  .hero-pills { flex-direction: column; align-items: center; }
+  .lead-detail-grid { grid-template-columns: 1fr; }
+  .kanban-board { grid-template-columns: repeat(2, 1fr); }
+  .steps-flow { gap: 0.5rem; padding: 1rem; }
+}
+@media (max-width: 480px) {
+  .metric-cards, .dispo-metrics { grid-template-columns: 1fr; }
+  .kanban-board { grid-template-columns: 1fr; }
+  .problema-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media print {
+  .navbar, .progress-bar { display: none; }
+  #hero { background: #F3F0FA !important; }
+  #hero::before { display: none; }
+  section { opacity: 1 !important; transform: none !important; page-break-inside: avoid; padding: 2rem 1rem; min-height: auto; }
+  body, html { background: #fff; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="navbar-logo">simplifique<span>.</span>ai</div>
+  <ul class="navbar-links">
+    <li><a href="#hero">Início</a></li>
+    <li><a href="#problema">Diagnóstico</a></li>
+    <li><a href="#jornada">Como Funciona</a></li>
+    <li><a href="#painel">Painel</a></li>
+    <li><a href="#plataforma">Plataforma</a></li>
+    <li><a href="#seguranca">Segurança</a></li>
+    <li><a href="#disponibilidade">SLA</a></li>
+    <li><a href="#proximos">Próximos Passos</a></li>
+  </ul>
+</nav>
+
+<!-- PROGRESS BAR -->
+<div class="progress-bar" id="progressBar">
+  <div class="progress-dot active" data-section="hero"></div>
+  <div class="progress-dot" data-section="problema"></div>
+  <div class="progress-dot" data-section="jornada"></div>
+  <div class="progress-dot" data-section="painel"></div>
+  <div class="progress-dot" data-section="plataforma"></div>
+  <div class="progress-dot" data-section="seguranca"></div>
+  <div class="progress-dot" data-section="disponibilidade"></div>
+  <div class="progress-dot" data-section="proximos"></div>
+</div>
+
+<!-- SEÇÃO 1 — HERO -->
+<section id="hero">
+  <div style="margin-bottom:1.5rem;font-size:1.5rem;font-weight:800;letter-spacing:-0.03em;color:var(--navy);opacity:0.85;">simplifique<span style="color:#D4186C">.</span>ai</div>
+  <h1 class="hero-title">SDR Inteligente 24/7</h1>
+  <p class="hero-desc">Sistema de Qualificação Automatizada de Leads — Construtora Tenda</p>
+  <div class="hero-agenda">
+    <div class="hero-agenda-title">Agenda desta apresentação</div>
+    <div class="hero-agenda-items">
+      <div class="hero-agenda-item">Diagnóstico: o problema que o sistema resolve</div>
+      <div class="hero-agenda-item">Demonstração: como o sistema funciona na prática</div>
+      <div class="hero-agenda-item">Painel do Vendedor: visão ao vivo do produto</div>
+      <div class="hero-agenda-item">Arquitetura, Segurança e Compliance LGPD</div>
+      <div class="hero-agenda-item">Q&A e próximos passos para o go-live</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- SEÇÃO 2 — DIAGNÓSTICO / PROBLEMA -->
+<section id="problema">
+  <div class="section-label">Diagnóstico</div>
+  <h2 class="section-title">Por que 99,5% dos leads<br>nunca chegam ao vendedor<span class="dot">.</span></h2>
+  <div class="problema-grid">
+    <div class="problema-card"><div class="number">8.400</div><div class="label">Leads/mês — só na Bahia</div></div>
+    <div class="problema-card"><div class="number">0,5%</div><div class="label">Taxa de conversão atual</div></div>
+    <div class="problema-card"><div class="number">99,5%</div><div class="label">Leads desperdiçados</div></div>
+  </div>
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Indicador</th>
+        <th>Tenda Hoje</th>
+        <th>Tenda com IA (conservador)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Tempo de resposta</td><td class="val-atual">30min — sem resposta</td><td class="val-ia"><span class="hot">&lt;2 minutos</span></td></tr>
+      <tr><td>Leads abordados</td><td class="val-atual">~30%</td><td class="val-ia">100%</td></tr>
+      <tr><td>Qualificação estruturada</td><td class="val-atual">0%</td><td class="val-ia">70%+</td></tr>
+      <tr><td>Taxa de conversão</td><td class="val-atual">0,5%</td><td class="val-ia">0,75 – 1,0%</td></tr>
+      <tr><td>Vendas/mês Bahia</td><td class="val-atual">42</td><td class="val-ia">63 – 84</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- SEÇÃO 3 — COMO FUNCIONA / JORNADA -->
+<section id="jornada">
+  <div class="section-label">Como funciona</div>
+  <h2 class="section-title">Do anúncio ao vendedor<br>em 5 etapas automáticas<span class="dot">.</span></h2>
+
+  <div class="steps-flow">
+    <div class="step-node"><div class="step-circle">1</div><div class="step-label">Anúncio</div></div>
+    <div class="step-arrow">→</div>
+    <div class="step-node"><div class="step-circle">2</div><div class="step-label">WhatsApp</div></div>
+    <div class="step-arrow">→</div>
+    <div class="step-node"><div class="step-circle">3</div><div class="step-label">IA Qualifica</div></div>
+    <div class="step-arrow">→</div>
+    <div class="step-node"><div class="step-circle">4</div><div class="step-label">Score</div></div>
+    <div class="step-arrow">→</div>
+    <div class="step-node"><div class="step-circle">5</div><div class="step-label">Vendedor</div></div>
+    <div class="step-arrow">→</div>
+    <div class="step-node"><div class="step-circle" style="background:var(--navy)">✓</div><div class="step-label">Venda</div></div>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-number">1</div>
+      <div class="timeline-title">Captação & Primeiro Contato</div>
+      <div class="timeline-desc">Lead vê anúncio (Facebook/Instagram/Google) e clica no botão WhatsApp. Abre diretamente no número dedicado do vendedor.</div>
+      <span class="timeline-chip">WhatsApp Business API</span>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-number">2</div>
+      <div class="timeline-title">Recepção Instantânea
+        <button class="btn-example" onclick="openModal('modal-conversa')">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Ver conversa real
+        </button>
+      </div>
+      <div class="timeline-desc">IA responde imediatamente — sem espera. Apresenta o empreendimento e inicia a qualificação de forma completamente natural. Lead sente que está sendo atendido, não qualificado.</div>
+      <span class="timeline-chip">OpenAI</span>
+      <span class="timeline-chip">Anthropic (backup)</span>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-number">3</div>
+      <div class="timeline-title">Qualificação Conversacional</div>
+      <div class="timeline-desc">IA coleta: interesse no imóvel, renda familiar, FGTS disponível, urgência de compra e localização. Em média <strong>10–12 mensagens</strong> para qualificação completa.</div>
+      <span class="timeline-chip">n8n workflows</span>
+      <span class="timeline-chip">Supabase PostgreSQL</span>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-number">4</div>
+      <div class="timeline-title">Score & Classificação Automática
+        <button class="btn-example" onclick="openModal('modal-score')">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Ver como funciona
+        </button>
+      </div>
+      <div class="timeline-desc">Ao encerrar a conversa, uma segunda IA analisa todos os dados coletados, calcula o score (0–100) e classifica automaticamente o lead.</div>
+      <div style="display:flex; gap:0.5rem; margin-top:0.5rem; flex-wrap:wrap;">
+        <span style="background:rgba(212,24,108,0.1);color:var(--accent);border:1px solid rgba(212,24,108,0.2);padding:0.2rem 0.7rem;border-radius:100px;font-size:0.75rem;font-weight:700;">🔥 Quente &gt;70</span>
+        <span style="background:rgba(217,119,6,0.1);color:var(--warm);border:1px solid rgba(217,119,6,0.2);padding:0.2rem 0.7rem;border-radius:100px;font-size:0.75rem;font-weight:700;">🟡 Morno 40–70</span>
+        <span style="background:rgba(107,114,128,0.08);color:var(--cold);border:1px solid rgba(107,114,128,0.15);padding:0.2rem 0.7rem;border-radius:100px;font-size:0.75rem;font-weight:700;">❄ Frio &lt;40</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-number">5</div>
+      <div class="timeline-title">Entrega ao Vendedor</div>
+      <div class="timeline-desc">Lead aparece no painel do vendedor em tempo real com contexto completo. Vendedor acessa sabendo tudo — renda, FGTS, urgência e abordagem recomendada.</div>
+      <span class="timeline-chip">Next.js 14 — Vercel Edge Network</span>
+    </div>
+  </div>
+</section>
+
+<!-- SEÇÃO 4 — PAINEL / KANBAN -->
+<section id="painel">
+  <div class="section-label">Painel do Vendedor</div>
+  <h2 class="section-title">Visão em tempo real<br>de cada lead qualificado<span class="dot">.</span></h2>
+  <p class="section-subtitle">Cada vendedor acessa seu painel pessoal pelo navegador ou celular. Sem instalar nada. Lead chega com contexto completo.</p>
+
+  <div class="kanban-board">
+    <div class="kanban-col">
+      <div class="kanban-header hot">🔥 QUENTES <span class="kanban-count">3</span></div>
+      <div class="lead-card hot" onclick="openModal('modal-lead')">
+        <div class="lead-card-name">João Silva</div>
+        <div class="lead-card-detail">Jardim Europa · 2 quartos</div>
+        <div class="lead-card-score hot">95 / 100</div>
+      </div>
+      <div class="lead-card hot">
+        <div class="lead-card-name">Maria Santos</div>
+        <div class="lead-card-detail">Parque Árvores · 2 quartos</div>
+        <div class="lead-card-score hot">88 / 100</div>
+      </div>
+      <div class="lead-card hot">
+        <div class="lead-card-name">Carlos Ferreira</div>
+        <div class="lead-card-detail">Vista Mar · 3 quartos</div>
+        <div class="lead-card-score hot">81 / 100</div>
+      </div>
+    </div>
+    <div class="kanban-col">
+      <div class="kanban-header warm">🟡 MORNOS <span class="kanban-count">2</span></div>
+      <div class="lead-card warm">
+        <div class="lead-card-name">Pedro Costa</div>
+        <div class="lead-card-detail">Jardim Europa · 2 quartos</div>
+        <div class="lead-card-score warm">62 / 100</div>
+      </div>
+      <div class="lead-card warm">
+        <div class="lead-card-name">Luciana Melo</div>
+        <div class="lead-card-detail">Parque Árvores · 2 quartos</div>
+        <div class="lead-card-score warm">54 / 100</div>
+      </div>
+    </div>
+    <div class="kanban-col">
+      <div class="kanban-header attending">⏳ EM ATENDIMENTO <span class="kanban-count">1</span></div>
+      <div class="lead-card attending">
+        <div class="lead-card-name">Ana Paula</div>
+        <div class="lead-card-detail">Vista Mar · 3 quartos</div>
+        <div class="lead-card-score attending">92 / 100</div>
+      </div>
+    </div>
+    <div class="kanban-col">
+      <div class="kanban-header sold">✅ VENDIDOS <span class="kanban-count">2</span></div>
+      <div class="lead-card sold">
+        <div class="lead-card-name">Carlos Silva</div>
+        <div class="lead-card-detail">R$ 220k · Jardim Europa</div>
+        <div class="lead-card-score sold">Vendido</div>
+      </div>
+      <div class="lead-card sold">
+        <div class="lead-card-name">Renata Souza</div>
+        <div class="lead-card-detail">R$ 195k · Vista Mar</div>
+        <div class="lead-card-score sold">Vendido</div>
+      </div>
+    </div>
+  </div>
+  <p style="margin-top:1rem;font-size:0.78rem;color:var(--text-dim);text-align:center;">
+    👆 Clique em <strong style="color:var(--accent)">João Silva</strong> para ver o card completo do lead
+  </p>
+</section>
+
+<!-- SEÇÃO 5 — PLATAFORMA -->
+<section id="plataforma">
+  <div class="section-label">A plataforma</div>
+  <h2 class="section-title">Dois ambientes<span class="dot">.</span><br>Uma operação integrada<span class="dot">.</span></h2>
+  <div class="platform-grid">
+    <div class="platform-card">
+      <div class="platform-card-header">
+        <div class="platform-icon front">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="#D4186C" stroke-width="2"/><path d="M3 9h18" stroke="#D4186C" stroke-width="2"/><circle cx="6.5" cy="6" r="1" fill="#D4186C"/><circle cx="9.5" cy="6" r="1" fill="#D4186C"/></svg>
+        </div>
+        <h3>O que o Vendedor vê</h3>
+      </div>
+      <div class="card-sub">Painel de Gestão — Frontend</div>
+      <ul class="platform-list">
+        <li>Painel web responsivo — navegador ou celular, sem instalar nada</li>
+        <li>Kanban de leads: Quente / Morno / Em Atendimento / Vendido</li>
+        <li>Card completo: score, dados coletados, resumo da conversa e abordagem recomendada</li>
+        <li>Alertas em tempo real para leads quentes (Modo Anti-Perda)</li>
+        <li>Histórico 100% das conversas — rastreável e auditável</li>
+        <li>Filtros por período, score, classificação e empreendimento</li>
+      </ul>
+      <div class="platform-tech">Next.js · Vercel</div>
+    </div>
+    <div class="platform-card">
+      <div class="platform-card-header">
+        <div class="platform-icon back">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="#A78BFA" stroke-width="2"/><path d="M12 2v4m0 12v4M2 12h4m12 0h4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83" stroke="#A78BFA" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>O que acontece por baixo</h3>
+      </div>
+      <div class="card-sub">Automação & Infraestrutura — Backend</div>
+      <ul class="platform-list">
+        <li>n8n — automações 24/7 sem interrupção</li>
+        <li>Webhook WhatsApp → n8n → IA → Supabase → Painel (pipeline completo)</li>
+        <li>OpenAI como primário; Anthropic como fallback automático</li>
+        <li>Banco Supabase PostgreSQL 15 — AWS São Paulo — Row Level Security ativo</li>
+        <li>Monitoramento contínuo + alertas automáticos para erros e latência</li>
+        <li>Backups diários automáticos com retenção de 30 dias</li>
+      </ul>
+      <div class="platform-tech">n8n · Supabase PostgreSQL</div>
+    </div>
+  </div>
+</section>
+
+<!-- SEÇÃO 6 — SEGURANÇA -->
+<section id="seguranca">
+  <div class="section-label">Segurança & LGPD</div>
+  <h2 class="section-title">Construído para<br>ambientes corporativos<span class="dot">.</span></h2>
+  <p class="section-subtitle">Todos os dados da Tenda pertencem 100% à Tenda. Exportação irrestrita a qualquer momento.</p>
+  <div class="security-grid">
+    <div class="security-card">
+      <div class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5.25-3.4 10.14-8 12-4.6-1.86-8-6.75-8-12V6l8-4z" stroke="#D4186C" stroke-width="2"/></svg></div>
+      <h3>Proteção dos Dados</h3>
+      <ul>
+        <li>Em trânsito: TLS 1.3 obrigatório</li>
+        <li>Em repouso: AES-256 (Supabase nativo)</li>
+        <li>Senhas: bcrypt via Supabase Auth</li>
+        <li>Banco no Brasil: AWS São Paulo</li>
+      </ul>
+    </div>
+    <div class="security-card">
+      <div class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="10" rx="2" stroke="#D4186C" stroke-width="2"/><path d="M8 11V7a4 4 0 118 0v4" stroke="#D4186C" stroke-width="2"/></svg></div>
+      <h3>Controle de Acesso</h3>
+      <ul>
+        <li>MFA obrigatório: Admin e Gestor (Google Authenticator TOTP)</li>
+        <li>MFA opcional: Vendedores</li>
+        <li>Row Level Security: cada vendedor vê só seus leads</li>
+        <li>Perfis: Admin / Gestor / Vendedor</li>
+        <li>Logs de auditoria — 12 meses de retenção</li>
+      </ul>
+    </div>
+    <div class="security-card">
+      <div class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4m5 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#D4186C" stroke-width="2"/></svg></div>
+      <h3>Conformidade LGPD</h3>
+      <ul>
+        <li>Contrato DPA com OpenAI e Anthropic</li>
+        <li>Política de incidentes documentada</li>
+        <li>Dados processados por IA não usados para treinamento</li>
+        <li>Retenção configurável; exclusão a qualquer momento</li>
+      </ul>
+    </div>
+    <div class="security-card">
+      <div class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h7" stroke="#D4186C" stroke-width="2" stroke-linecap="round"/></svg></div>
+      <h3>Segregação de Dados</h3>
+      <ul>
+        <li>Isolamento lógico por cliente (single-tenant logic)</li>
+        <li>Banco dedicado por cliente no Supabase</li>
+        <li>Variáveis de ambiente separadas por projeto</li>
+        <li>Firewall dedicado por servidor</li>
+      </ul>
+    </div>
+  </div>
+  <div class="partners-bar">Supabase — SOC 2 &nbsp;·&nbsp; Hetzner — ISO 27001 &nbsp;·&nbsp; Vercel — SOC 2 &nbsp;·&nbsp; OpenAI / Anthropic — DPA LGPD &nbsp;·&nbsp; Meta — WhatsApp Business</div>
+</section>
+
+<!-- SEÇÃO 7 — DISPONIBILIDADE -->
+<section id="disponibilidade">
+  <div class="section-label">Disponibilidade & SLA</div>
+  <h2 class="section-title">Infraestrutura que não para<span class="dot">.</span></h2>
+  <div class="dispo-metrics">
+    <div class="dispo-card"><div class="number">99%</div><div class="label">Uptime mensal (esforço contratual)</div></div>
+    <div class="dispo-card"><div class="number">30 dias</div><div class="label">Retenção de backups (diários)</div></div>
+    <div class="dispo-card"><div class="number">24/7</div><div class="label">Monitoramento ativo</div></div>
+    <div class="dispo-card"><div class="number">48h</div><div class="label">Aviso prévio para manutenções</div></div>
+  </div>
+  <div class="golive-timeline">
+    <h3 class="golive-title">Linha do tempo para o Go-Live</h3>
+    <div class="golive-phases">
+      <div class="golive-phase"><span class="phase-badge">Fase 1 — até 40 dias</span><span class="phase-text"><strong>Setup & Desenvolvimento:</strong> diagnóstico 5 dias, configuração WhatsApp API, treinamento base de conhecimento, dashboards, testes 100+ conversas</span></div>
+      <div class="golive-phase"><span class="phase-badge">Fase 2 — 90 dias</span><span class="phase-text"><strong>Operação Ativa:</strong> plataforma 24/7 com 4 agentes piloto, relatórios semanais e suporte contínuo</span></div>
+      <div class="golive-phase"><span class="phase-badge">Fase 3 — D+120</span><span class="phase-text"><strong>Análise & Decisão:</strong> resultados do piloto, otimizações identificadas e decisão de expansão nacional</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SEÇÃO 8 — PRÓXIMOS PASSOS -->
+<section id="proximos">
+  <div class="section-label">Roadmap</div>
+  <h2 class="section-title">Próximos passos<br>para o go-live<span class="dot">.</span></h2>
+  <div class="checklist">
+    <div class="checklist-item current">
+      <div class="checklist-circle"></div>
+      Validação técnica e compliance — TI + Jurídico
+      <span class="current-tag">← estamos aqui</span>
+    </div>
+    <div class="checklist-item"><div class="checklist-circle"></div>D+2 — Seleção dos 4 agentes piloto (2 high + 2 low performers)</div>
+    <div class="checklist-item"><div class="checklist-circle"></div>D+5 — Contrato + NDA + pagamento (50% setup)</div>
+    <div class="checklist-item"><div class="checklist-circle"></div>D+7–11 — Diagnóstico e base de conhecimento (5 dias com agentes)</div>
+    <div class="checklist-item"><div class="checklist-circle"></div>D+40 — Go-live 24/7 · Treinamento equipe (2h remoto)</div>
+  </div>
+</section>
+
+<div style="height:4rem"></div>
+
+<!-- MODAL: CONVERSA REAL -->
+<div class="modal-overlay" id="modal-conversa" onclick="closeOnOverlay(event, 'modal-conversa')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-conversa')">✕</button>
+    <div class="modal-title">💬 Conversa Real com IA</div>
+    <div class="modal-sub">Exemplo de qualificação completa em ~10 mensagens</div>
+    <div class="chat-window">
+      <div class="chat-msg ia">
+        <div class="chat-sender">IA Sara</div>
+        <div class="chat-bubble">Oi João! Vi que você se interessou pelo Jardim Europa. Conhece a região de Lauro Freitas?</div>
+      </div>
+      <div class="chat-msg lead">
+        <div class="chat-sender">João</div>
+        <div class="chat-bubble">Conheço sim, moro perto</div>
+      </div>
+      <div class="chat-msg ia">
+        <div class="chat-sender">IA Sara</div>
+        <div class="chat-bubble">Que legal! Você está procurando 2 ou 3 quartos?</div>
+      </div>
+      <div class="chat-msg lead">
+        <div class="chat-sender">João</div>
+        <div class="chat-bubble">2 quartos mesmo</div>
+      </div>
+      <div class="chat-msg ia">
+        <div class="chat-sender">IA Sara</div>
+        <div class="chat-bubble">Perfeito! Os de 2 quartos saem a partir de R$ 189 mil. Você tem FGTS para usar como entrada?</div>
+      </div>
+      <div class="chat-msg lead">
+        <div class="chat-sender">João</div>
+        <div class="chat-bubble">Tenho uns R$ 18 mil</div>
+      </div>
+      <div class="chat-msg ia">
+        <div class="chat-sender">IA Sara</div>
+        <div class="chat-bubble">Ótimo! E qual sua renda mensal? CLT ou autônomo?</div>
+      </div>
+      <div class="chat-msg lead">
+        <div class="chat-sender">João</div>
+        <div class="chat-bubble">CLT, ganho R$ 3.500</div>
+      </div>
+      <div class="chat-msg ia">
+        <div class="chat-sender">IA Sara</div>
+        <div class="chat-bubble">Perfeito! Com essa renda você se qualifica para financiamento habitacional. Pretende comprar nos próximos 3, 6 ou 12 meses?</div>
+      </div>
+      <div class="chat-msg lead">
+        <div class="chat-sender">João</div>
+        <div class="chat-bubble">Quero comprar logo, tô pagando aluguel</div>
+      </div>
+    </div>
+    <div class="chat-result">
+      📊 <strong>RESULTADO:</strong> Em 10 mensagens a IA qualificou completamente o lead.<br>
+      Score: <strong style="color:var(--accent)">95/100 = LEAD QUENTE 🔥</strong><br>
+      → Vendedor notificado imediatamente com contexto completo.
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: COMO FUNCIONA O SCORE -->
+<div class="modal-overlay" id="modal-score" onclick="closeOnOverlay(event, 'modal-score')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-score')">✕</button>
+    <div class="modal-title">📊 Como funciona o Score</div>
+    <div class="modal-sub">Pipeline de 3 etapas: conversa → análise → classificação</div>
+    <div class="score-flow">
+      <div class="score-step">
+        <div class="score-step-icon blue">💬</div>
+        <div class="score-step-body">
+          <h4>1. IA Conversacional coleta os dados</h4>
+          <p>A primeira IA conduz a conversa e coleta: imóvel desejado, renda familiar, FGTS disponível, urgência de compra, localização, situação de crédito. Tudo armazenado no banco de dados em tempo real.</p>
+        </div>
+      </div>
+      <div class="score-step">
+        <div class="score-step-icon green">🧠</div>
+        <div class="score-step-body">
+          <h4>2. IA de Análise processa e pontua</h4>
+          <p>Ao encerrar a conversa, uma segunda IA analisa todos os dados coletados considerando: adequação de renda ao produto, capital disponível (FGTS), urgência de compra e engajamento na conversa.</p>
+          <div class="score-bar-wrap">
+            <div class="score-bar-label"><span>Renda x Produto</span><span>Peso 35%</span></div>
+            <div class="score-bar-track"><div class="score-bar-fill hot" style="width:35%"></div></div>
+          </div>
+          <div class="score-bar-wrap">
+            <div class="score-bar-label"><span>Urgência de Compra</span><span>Peso 30%</span></div>
+            <div class="score-bar-track"><div class="score-bar-fill warm" style="width:30%"></div></div>
+          </div>
+          <div class="score-bar-wrap">
+            <div class="score-bar-label"><span>FGTS / Capital</span><span>Peso 20%</span></div>
+            <div class="score-bar-track"><div class="score-bar-fill cold" style="width:20%"></div></div>
+          </div>
+          <div class="score-bar-wrap">
+            <div class="score-bar-label"><span>Engajamento</span><span>Peso 15%</span></div>
+            <div class="score-bar-track"><div class="score-bar-fill hot" style="width:15%"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="score-step">
+        <div class="score-step-icon red">🎯</div>
+        <div class="score-step-body">
+          <h4>3. Classificação automática e entrega</h4>
+          <p>Score 0–100 calculado e lead classificado. Dados salvos no Supabase e painel do vendedor atualizado instantaneamente.</p>
+          <div class="classification-chips">
+            <span class="chip-class hot">🔥 Quente — Score &gt;70 — Notificação imediata</span>
+            <span class="chip-class warm">🟡 Morno — Score 40–70 — Visível no painel</span>
+            <span class="chip-class cold">❄ Frio — Score &lt;40 — Registrado para análise</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: CARD DO LEAD (DETALHE) -->
+<div class="modal-overlay" id="modal-lead" onclick="closeOnOverlay(event, 'modal-lead')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-lead')">✕</button>
+    <div class="modal-title">Card do Lead — João Silva</div>
+    <div class="modal-sub">Vendedor vê este card ao abrir o lead no painel</div>
+
+    <div class="lead-score-display">
+      <div class="lead-score-num">95</div>
+      <div class="lead-score-info">
+        <h4>🔥 LEAD QUENTE</h4>
+        <p>Score calculado automaticamente por IA · Notificação enviada ao vendedor</p>
+      </div>
+    </div>
+
+    <div class="lead-detail-grid">
+      <div class="lead-detail-field"><label>Nome</label><value>João Silva</value></div>
+      <div class="lead-detail-field"><label>Empreendimento</label><value>Jardim Europa</value></div>
+      <div class="lead-detail-field"><label>Tipologia</label><value>2 quartos</value></div>
+      <div class="lead-detail-field"><label>Renda Mensal</label><value>R$ 3.500 · CLT</value></div>
+      <div class="lead-detail-field"><label>FGTS Disponível</label><value>R$ 18.000</value></div>
+      <div class="lead-detail-field"><label>Urgência</label><value>🔥 Comprar logo (paga aluguel)</value></div>
+      <div class="lead-detail-field"><label>Elegível financiamento</label><value>✅ Sim</value></div>
+      <div class="lead-detail-field"><label>Localização</label><value>Lauro Freitas — próximo ao empr.</value></div>
+    </div>
+
+    <div class="lead-summary-box">
+      <h4>📋 Resumo da conversa</h4>
+      <p>João demonstrou alto interesse no Jardim Europa, confirmou conhecer bem a região e mora próximo. Renda de R$ 3.500 CLT qualifica para financiamento habitacional. Possui R$ 18 mil de FGTS para entrada. Urgência máxima: quer sair do aluguel o quanto antes. Altamente engajado durante toda a conversa — respondeu todas as perguntas sem hesitação.</p>
+    </div>
+
+    <div class="lead-abordagem-box">
+      <h4>🎯 Abordagem recomendada pela IA</h4>
+      <p>Ligar no período da manhã. Iniciar destacando que ele se qualificou para o MCMV com o FGTS disponível. Reforçar o argumento de sair do aluguel e entrar num imóvel próprio com parcela similar ao que paga hoje. Oferecer agendamento de visita presencial no empreendimento.</p>
+    </div>
+
+    <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+      <button style="flex:1;min-width:140px;background:var(--accent);color:#fff;border:none;border-radius:10px;padding:0.75rem 1rem;font-weight:700;font-size:0.85rem;cursor:pointer;">📞 Assumir Lead</button>
+      <button style="flex:1;min-width:140px;background:var(--bg-soft);color:var(--navy);border:1px solid var(--border);border-radius:10px;padding:0.75rem 1rem;font-weight:600;font-size:0.85rem;cursor:pointer;">💬 Ver conversa completa</button>
+    </div>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Intersection Observer for sections
+const sections = document.querySelectorAll('section');
+const dots = document.querySelectorAll('.progress-dot');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      dots.forEach(d => d.classList.remove('active'));
+      const activeDot = document.querySelector(`.progress-dot[data-section="${entry.target.id}"]`);
+      if (activeDot) activeDot.classList.add('active');
+    }
+  });
+}, { threshold: 0.05, rootMargin: '0px 0px -5% 0px' });
+sections.forEach(s => observer.observe(s));
+
+// Force all sections in viewport on load (fixes hero blank issue)
+window.addEventListener('load', () => {
+  sections.forEach(s => {
+    const rect = s.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      s.classList.add('visible');
+    }
+  });
+});
+
+// Progress dot navigation
+dots.forEach(dot => {
+  dot.addEventListener('click', () => {
+    const t = document.getElementById(dot.dataset.section);
+    if (t) t.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+// Navbar links
+document.querySelectorAll('.navbar-links a').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) t.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+// Modal functions
+function openModal(id) {
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeOnOverlay(e, id) {
+  if (e.target === e.currentTarget) closeModal(id);
+}
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(m => {
+      m.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  }
+});
+</script>
+</body>
+</html>
