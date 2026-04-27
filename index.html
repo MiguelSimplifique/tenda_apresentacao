@@ -3,13 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Apresentação Técnica-Estratégica | SDR AI — Tenda</title>
+<title>SDR Inteligente | Simplifique.ai × Tenda</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet">
 <style>
+/* ===== RESET ===== */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; background: #fff; color: #1E2A4A; font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.6; }
+body { background: #fff; overflow-x: hidden; }
 
+/* ===== VARIABLES ===== */
 :root {
   --bg: #FFFFFF;
   --bg-soft: #F8F9FC;
@@ -30,10 +34,7 @@
   --cold: #6B7280;
 }
 
-html { scroll-behavior: smooth; background: var(--bg); color: var(--text); font-family: var(--font); font-size: 16px; line-height: 1.6; }
-body { background: var(--bg); overflow-x: hidden; }
-
-/* NAVBAR */
+/* ===== NAVBAR ===== */
 .navbar {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   background: rgba(255,255,255,0.92);
@@ -44,11 +45,17 @@ body { background: var(--bg); overflow-x: hidden; }
 }
 .navbar-logo { font-weight: 700; font-size: 1.05rem; color: var(--navy); letter-spacing: -0.02em; }
 .navbar-logo span { color: var(--accent); }
+.navbar-badge {
+  font-size: 0.7rem; font-weight: 600; color: var(--text-dim);
+  background: var(--bg-soft); border: 1px solid var(--border);
+  padding: 0.2rem 0.7rem; border-radius: 100px; margin-left: 0.75rem;
+}
 .navbar-links { display: flex; gap: 1.5rem; list-style: none; }
 .navbar-links a { color: var(--text-body); text-decoration: none; font-size: 0.82rem; font-weight: 500; transition: color 0.3s; }
 .navbar-links a:hover { color: var(--navy); }
+@media (max-width: 768px) { .navbar-links { display: none; } .navbar-badge { display: none; } }
 
-/* PROGRESS BAR */
+/* ===== PROGRESS BAR ===== */
 .progress-bar {
   position: fixed; right: 1.5rem; top: 50%; transform: translateY(-50%); z-index: 99;
   display: flex; flex-direction: column; gap: 0.5rem; align-items: center;
@@ -58,17 +65,22 @@ body { background: var(--bg); overflow-x: hidden; }
   transition: all 0.4s; cursor: pointer; opacity: 0.4;
 }
 .progress-dot.active {
-  background: var(--accent); box-shadow: 0 0 10px rgba(212,24,108,0.35);
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(212,24,108,0.35);
   transform: scale(1.4); opacity: 1;
 }
+@media (max-width: 768px) { .progress-bar { right: 0.5rem; } .progress-dot { width: 6px; height: 6px; } }
 
-/* SECTIONS */
+/* ===== SECTIONS ===== */
 section {
-  min-height: 100vh; padding: 8rem 2rem 4rem; max-width: 1120px; margin: 0 auto;
-  opacity: 1; transform: translateY(0);
+  min-height: 100vh;
+  padding: 8rem 2rem 4rem;
+  max-width: 1120px;
+  margin: 0 auto;
 }
-section.visible { opacity: 1; transform: translateY(0); }
+@media (max-width: 768px) { section { padding: 6rem 1.2rem 3rem; } }
 
+/* ===== TYPOGRAPHY ===== */
 .section-label {
   font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
   text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem;
@@ -78,9 +90,11 @@ section.visible { opacity: 1; transform: translateY(0); }
   line-height: 1.15; color: var(--navy); margin-bottom: 0.5rem;
 }
 .section-title .dot { color: var(--accent); }
-.section-subtitle { color: var(--text-body); font-size: 1rem; margin-bottom: 2.5rem; max-width: 560px; }
+.section-subtitle {
+  color: var(--text-body); font-size: 1rem; margin-bottom: 2.5rem; max-width: 560px;
+}
 
-/* HERO */
+/* ===== HERO ===== */
 #hero {
   display: flex; flex-direction: column; justify-content: center; align-items: center;
   text-align: center; min-height: 100vh; padding-top: 56px;
@@ -91,100 +105,96 @@ section.visible { opacity: 1; transform: translateY(0); }
   background: radial-gradient(ellipse at 50% 120%, rgba(255,255,255,0.5) 0%, transparent 70%);
 }
 #hero > * { position: relative; z-index: 1; }
-.hero-logo-img { height: 36px; margin-bottom: 1.5rem; filter: brightness(0) saturate(100%); opacity: 0.85; }
 .hero-badge {
   display: inline-flex; align-items: center; gap: 0.5rem;
   background: rgba(255,255,255,0.25); backdrop-filter: blur(10px);
   border: 1px solid rgba(255,255,255,0.35); color: var(--navy);
   padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.72rem;
-  font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 2.5rem;
+  font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 2rem;
 }
 .hero-title {
   font-size: clamp(2.5rem, 6vw, 4.2rem); font-weight: 800; letter-spacing: -0.04em;
-  line-height: 1.05; color: var(--navy); margin-bottom: 1rem;
+  line-height: 1.05; color: var(--navy); margin-bottom: 1rem; padding: 0 1rem;
 }
 .hero-desc {
   color: var(--navy-light); font-size: 1.1rem; max-width: 520px;
-  margin-bottom: 0.75rem; line-height: 1.65; font-weight: 400;
+  margin-bottom: 1.5rem; line-height: 1.65; font-weight: 400; padding: 0 1rem;
 }
 .hero-agenda {
   background: rgba(255,255,255,0.3); backdrop-filter: blur(10px);
   border: 1px solid rgba(255,255,255,0.45); border-radius: 16px;
   padding: 1.2rem 2rem; margin-bottom: 2.5rem; max-width: 580px; text-align: left;
+  width: 90%;
 }
-.hero-agenda-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy); opacity: 0.6; margin-bottom: 0.6rem; }
-.hero-agenda-items { display: flex; flex-direction: column; gap: 0.35rem; }
-.hero-agenda-item { font-size: 0.82rem; color: var(--navy); font-weight: 500; display: flex; align-items: center; gap: 0.5rem; }
-.hero-agenda-item::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
-.hero-pills { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; }
-.pill {
-  display: inline-flex; align-items: center; gap: 0.45rem;
-  background: rgba(255,255,255,0.5); backdrop-filter: blur(8px);
-  border: 1px solid rgba(255,255,255,0.5); color: var(--navy);
-  padding: 0.5rem 1.1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600;
+.hero-agenda-title {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--navy); opacity: 0.6; margin-bottom: 0.6rem;
 }
-.pill .check {
-  width: 18px; height: 18px; background: var(--navy); border-radius: 50%;
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+.hero-agenda-grid { display: flex; flex-direction: column; gap: 0.35rem; }
+.hero-agenda-item {
+  font-size: 0.82rem; color: var(--navy); font-weight: 500;
+  display: flex; align-items: center; gap: 0.5rem;
 }
-.pill .check svg { width: 10px; height: 10px; }
+.hero-agenda-item::before {
+  content: ''; width: 5px; height: 5px; border-radius: 50%;
+  background: var(--accent); flex-shrink: 0;
+}
+.hero-scroll {
+  display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+  color: var(--navy); opacity: 0.5; font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer;
+  animation: bounce 2s ease-in-out infinite;
+}
+@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
 
-/* SISTEMA / PROBLEMA */
-.problema-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
-.problema-card {
-  background: var(--bg-soft); border: 1px solid var(--border); border-radius: 16px;
-  padding: 1.75rem 1.5rem; text-align: center;
-}
-.problema-card .number { font-size: 2.4rem; font-weight: 800; color: var(--accent); line-height: 1; margin-bottom: 0.4rem; letter-spacing: -0.03em; }
-.problema-card .label { color: var(--text-body); font-size: 0.82rem; font-weight: 500; }
-.problema-highlight {
-  background: linear-gradient(135deg, rgba(212,24,108,0.06) 0%, rgba(212,24,108,0.02) 100%);
-  border: 1px solid rgba(212,24,108,0.18); border-radius: 14px; padding: 1.2rem 1.5rem;
-  display: flex; align-items: center; gap: 0.75rem; margin-bottom: 2.5rem;
-}
-.problema-highlight strong { color: var(--accent); font-weight: 700; font-size: 0.9rem; }
-.problema-highlight span { color: var(--text-body); font-size: 0.9rem; }
-
-.comparison-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
-.comparison-table th { background: var(--navy); color: #fff; padding: 0.85rem 1.2rem; text-align: left; font-size: 0.82rem; font-weight: 600; }
-.comparison-table th:first-child { border-radius: 12px 0 0 0; }
-.comparison-table th:last-child { border-radius: 0 12px 0 0; }
-.comparison-table td { padding: 0.8rem 1.2rem; font-size: 0.88rem; color: var(--text-body); border-bottom: 1px solid var(--border); }
-.comparison-table tr:last-child td { border-bottom: none; }
-.comparison-table tr:nth-child(even) td { background: var(--bg-soft); }
-.comparison-table .val-atual { color: var(--text-dim); }
-.comparison-table .val-ia { color: var(--navy); font-weight: 600; }
-.comparison-table .val-ia .hot { color: var(--accent); }
-
-.metric-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+/* ===== CARDS ===== */
 .metric-card {
   background: var(--bg-card-gradient); border: 1px solid var(--border); border-radius: 16px;
   padding: 2rem 1.5rem; text-align: center; transition: transform 0.3s, box-shadow 0.3s;
 }
 .metric-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(30,42,74,0.08); }
-.metric-card .number { font-size: 2.6rem; font-weight: 800; color: var(--navy); line-height: 1; margin-bottom: 0.5rem; letter-spacing: -0.03em; }
+.metric-card .number {
+  font-size: 2.6rem; font-weight: 800; color: var(--navy);
+  line-height: 1; margin-bottom: 0.5rem; letter-spacing: -0.03em;
+}
 .metric-card .label { color: var(--text-body); font-size: 0.85rem; font-weight: 500; }
+.metric-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2.5rem; }
+@media (max-width: 768px) { .metric-cards { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .metric-cards { grid-template-columns: 1fr; } }
 
-/* JORNADA / STEPS */
-.steps-flow {
-  display: flex; align-items: center; gap: 0; margin-bottom: 3rem; flex-wrap: wrap;
-  background: var(--bg-soft); border: 1px solid var(--border); border-radius: 20px; padding: 1.5rem 2rem;
+.card {
+  background: var(--bg-soft); border: 1px solid var(--border); border-radius: 20px;
+  padding: 2rem 1.75rem; transition: box-shadow 0.3s;
 }
-.step-node {
-  display: flex; flex-direction: column; align-items: center; gap: 0.3rem;
-  flex: 1; min-width: 90px; cursor: default;
+.card:hover { box-shadow: 0 8px 30px rgba(30,42,74,0.06); }
+.card-icon {
+  width: 42px; height: 42px; border-radius: 12px; background: var(--accent-light);
+  display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;
+  font-size: 1.2rem;
 }
-.step-circle {
-  width: 44px; height: 44px; border-radius: 50%; background: var(--accent);
-  color: #fff; font-weight: 800; font-size: 0.85rem;
-  display: flex; align-items: center; justify-content: center;
-  transition: transform 0.2s, box-shadow 0.2s;
+.card-icon.purple { background: rgba(167,139,250,0.1); }
+.card-icon.green { background: rgba(16,185,129,0.1); }
+.card-title { font-weight: 700; font-size: 1rem; color: var(--navy); margin-bottom: 0.4rem; }
+.card-desc { color: var(--text-body); font-size: 0.88rem; line-height: 1.6; }
+.card-list { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; margin-top: 0.75rem; }
+.card-list li {
+  color: var(--text-body); font-size: 0.88rem;
+  padding-left: 1.4rem; position: relative; line-height: 1.55;
 }
-.step-node:hover .step-circle { transform: scale(1.12); box-shadow: 0 4px 16px rgba(212,24,108,0.35); }
-.step-label { font-size: 0.72rem; font-weight: 600; color: var(--navy); text-align: center; line-height: 1.3; }
-.step-arrow { color: var(--text-dim); font-size: 1.2rem; flex-shrink: 0; padding: 0 0.25rem; }
+.card-list li::before {
+  content: ''; position: absolute; left: 0; top: 9px;
+  width: 6px; height: 6px; border-radius: 50%; background: var(--accent); opacity: 0.6;
+}
 
-.timeline { position: relative; margin-top: 0; }
+/* ===== GRIDS ===== */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+@media (max-width: 900px) { .grid-3 { grid-template-columns: 1fr 1fr; } .grid-4 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) { .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; } }
+
+/* ===== TIMELINE ===== */
+.timeline { position: relative; }
 .timeline::before {
   content: ''; position: absolute; left: 24px; top: 0; bottom: 0; width: 2px;
   background: linear-gradient(to bottom, var(--accent), #A78BFA, var(--accent)); opacity: 0.2;
@@ -196,224 +206,124 @@ section.visible { opacity: 1; transform: translateY(0); }
   background: var(--accent); color: #fff; font-weight: 700; font-size: 0.85rem;
   display: flex; align-items: center; justify-content: center;
 }
-.timeline-title { font-weight: 700; font-size: 1.05rem; color: var(--navy); margin-bottom: 0.3rem; display: flex; align-items: center; gap: 0.75rem; }
-.timeline-desc { color: var(--text-body); font-size: 0.88rem; line-height: 1.65; margin-bottom: 0.5rem; }
+.timeline-title { font-weight: 700; font-size: 1.05rem; color: var(--navy); margin-bottom: 0.3rem; }
+.timeline-desc { color: var(--text-body); font-size: 0.88rem; line-height: 1.65; }
 .timeline-chip {
   display: inline-block; background: var(--bg-soft); border: 1px solid var(--border);
-  color: var(--text-dim); padding: 0.2rem 0.65rem; border-radius: 6px; font-size: 0.7rem; font-weight: 500; margin-right: 0.4rem;
+  color: var(--text-dim); padding: 0.2rem 0.65rem; border-radius: 6px;
+  font-size: 0.7rem; font-weight: 500; margin-right: 0.4rem; margin-top: 0.4rem;
 }
-.btn-example {
+
+/* ===== STEPS FLOW ===== */
+.steps-flow {
+  display: flex; align-items: center;
+  background: var(--bg-soft); border: 1px solid var(--border); border-radius: 20px;
+  padding: 1.5rem 2rem; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 3rem;
+}
+.step-node { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; flex: 1; min-width: 80px; }
+.step-circle {
+  width: 44px; height: 44px; border-radius: 50%; background: var(--accent);
+  color: #fff; font-weight: 800; font-size: 0.85rem;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.step-node:hover .step-circle { transform: scale(1.12); box-shadow: 0 4px 16px rgba(212,24,108,0.35); }
+.step-label { font-size: 0.72rem; font-weight: 600; color: var(--navy); text-align: center; line-height: 1.3; }
+.step-arrow { color: var(--text-dim); font-size: 1.2rem; flex-shrink: 0; }
+
+/* ===== COMPARISON TABLE ===== */
+.table-wrap { border-radius: 16px; overflow: hidden; border: 1px solid var(--border); }
+.comparison-table { width: 100%; border-collapse: collapse; }
+.comparison-table th {
+  background: var(--navy); color: #fff; padding: 0.85rem 1.2rem;
+  text-align: left; font-size: 0.82rem; font-weight: 600;
+}
+.comparison-table td {
+  padding: 0.8rem 1.2rem; font-size: 0.88rem;
+  color: var(--text-body); border-bottom: 1px solid var(--border);
+}
+.comparison-table tr:last-child td { border-bottom: none; }
+.comparison-table tr:nth-child(even) td { background: var(--bg-soft); }
+.val-atual { color: var(--text-dim) !important; }
+.val-ia { color: var(--navy) !important; font-weight: 600 !important; }
+.val-ia .highlight { color: var(--accent); }
+
+/* ===== SCORE / CHIPS ===== */
+.chip-class {
+  padding: 0.35rem 0.9rem; border-radius: 100px; font-size: 0.78rem; font-weight: 700;
   display: inline-flex; align-items: center; gap: 0.4rem;
-  background: var(--accent); color: #fff; border: none; border-radius: 8px;
-  padding: 0.35rem 0.9rem; font-size: 0.75rem; font-weight: 600; cursor: pointer;
-  transition: background 0.2s, transform 0.15s; margin-top: 0.5rem;
 }
-.btn-example:hover { background: #c91040; transform: translateY(-1px); }
-.btn-example svg { width: 12px; height: 12px; }
+.chip-class.hot  { background: rgba(212,24,108,0.1);  color: var(--hot);  border: 1px solid rgba(212,24,108,0.25); }
+.chip-class.warm { background: rgba(217,119,6,0.1);   color: var(--warm); border: 1px solid rgba(217,119,6,0.2); }
+.chip-class.cold { background: rgba(107,114,128,0.08); color: var(--cold); border: 1px solid rgba(107,114,128,0.15); }
+.chip-class.verde{ background: rgba(16,185,129,0.08); color: #059669;     border: 1px solid rgba(16,185,129,0.2); }
 
-/* MODALS / OVERLAYS */
-.modal-overlay {
-  display: flex; position: fixed; inset: 0; z-index: 99999;
-  background: rgba(10,15,35,0.6); backdrop-filter: blur(6px);
-  align-items: center; justify-content: center; padding: 2rem;
-  visibility: hidden; opacity: 0; transition: opacity 0.25s ease, visibility 0.25s ease;
-  pointer-events: none;
-}
-.modal-overlay.open { visibility: visible; opacity: 1; pointer-events: all; }
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-.modal-box {
-  background: #fff; border-radius: 24px; max-width: 680px; width: 100%;
-  max-height: 85vh; overflow-y: auto; padding: 2.5rem;
-  box-shadow: 0 24px 80px rgba(10,15,35,0.25); animation: slideUp 0.3s ease;
-  position: relative;
-}
-@keyframes slideUp { from { transform: translateY(24px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-.modal-close {
-  position: absolute; top: 1.2rem; right: 1.2rem;
-  width: 32px; height: 32px; border-radius: 50%; background: var(--bg-soft);
-  border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
-  color: var(--text-dim); font-size: 1.1rem; transition: background 0.2s;
-}
-.modal-close:hover { background: var(--border); }
-.modal-title { font-size: 1.15rem; font-weight: 800; color: var(--navy); margin-bottom: 0.25rem; }
-.modal-sub { font-size: 0.82rem; color: var(--text-dim); margin-bottom: 1.5rem; }
-
-/* CHAT UI */
-.chat-window {
-  background: #F0F2F5; border-radius: 16px; padding: 1.2rem; display: flex; flex-direction: column; gap: 0.75rem;
-  max-height: 420px; overflow-y: auto;
-}
-.chat-msg { display: flex; flex-direction: column; max-width: 80%; }
-.chat-msg.ia { align-self: flex-start; }
-.chat-msg.lead { align-self: flex-end; align-items: flex-end; }
-.chat-bubble {
-  padding: 0.6rem 1rem; border-radius: 16px; font-size: 0.85rem; line-height: 1.55;
-}
-.chat-msg.ia .chat-bubble { background: #fff; color: var(--navy); border-bottom-left-radius: 4px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
-.chat-msg.lead .chat-bubble { background: var(--navy); color: #fff; border-bottom-right-radius: 4px; }
-.chat-sender { font-size: 0.67rem; font-weight: 700; color: var(--text-dim); margin-bottom: 0.15rem; text-transform: uppercase; letter-spacing: 0.04em; }
-.chat-msg.ia .chat-sender { color: var(--accent); }
-.chat-result {
-  background: linear-gradient(135deg, rgba(212,24,108,0.06), rgba(167,139,250,0.06));
-  border: 1px solid rgba(212,24,108,0.2); border-radius: 12px; padding: 1rem 1.2rem; margin-top: 0.75rem;
-  font-size: 0.85rem; color: var(--navy);
-}
-.chat-result strong { color: var(--accent); }
-
-/* SCORE MODAL */
-.score-flow { display: flex; flex-direction: column; gap: 1rem; }
-.score-step {
-  display: flex; gap: 1rem; align-items: flex-start;
-  background: var(--bg-soft); border: 1px solid var(--border); border-radius: 14px; padding: 1.2rem;
-}
-.score-step-icon {
-  width: 38px; height: 38px; border-radius: 10px; flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
-}
-.score-step-icon.blue { background: rgba(167,139,250,0.15); }
-.score-step-icon.green { background: rgba(16,185,129,0.1); }
-.score-step-icon.red { background: var(--accent-light); }
-.score-step-body h4 { font-weight: 700; font-size: 0.92rem; color: var(--navy); margin-bottom: 0.2rem; }
-.score-step-body p { font-size: 0.82rem; color: var(--text-body); line-height: 1.55; }
-.score-bar-wrap { margin-top: 1rem; }
-.score-bar-label { display: flex; justify-content: space-between; font-size: 0.75rem; font-weight: 600; color: var(--navy); margin-bottom: 0.4rem; }
-.score-bar-track { height: 10px; background: var(--border); border-radius: 100px; overflow: hidden; }
+.score-bar-track { height: 10px; background: var(--border); border-radius: 100px; overflow: hidden; margin-top: 0.4rem; }
 .score-bar-fill { height: 100%; border-radius: 100px; transition: width 1s ease; }
-.score-bar-fill.hot { background: linear-gradient(90deg, #D4186C, #F472B6); }
+.score-bar-fill.hot  { background: linear-gradient(90deg, #D4186C, #F472B6); }
 .score-bar-fill.warm { background: linear-gradient(90deg, #D97706, #F59E0B); }
 .score-bar-fill.cold { background: linear-gradient(90deg, #6B7280, #9CA3AF); }
-.classification-chips { display: flex; gap: 0.5rem; margin-top: 1rem; flex-wrap: wrap; }
-.chip-class {
-  padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.78rem; font-weight: 700;
-  display: flex; align-items: center; gap: 0.4rem;
-}
-.chip-class.hot { background: rgba(212,24,108,0.1); color: var(--accent); border: 1px solid rgba(212,24,108,0.25); }
-.chip-class.warm { background: rgba(217,119,6,0.1); color: var(--warm); border: 1px solid rgba(217,119,6,0.2); }
-.chip-class.cold { background: rgba(107,114,128,0.08); color: var(--cold); border: 1px solid rgba(107,114,128,0.15); }
+.score-bar-fill.verde { background: linear-gradient(90deg, #059669, #34D399); }
 
-/* KANBAN */
-.kanban-board { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2rem; }
-.kanban-col { display: flex; flex-direction: column; gap: 0.75rem; }
-.kanban-header {
-  display: flex; align-items: center; gap: 0.5rem; padding: 0.6rem 0.8rem;
-  border-radius: 10px; font-size: 0.78rem; font-weight: 700;
+/* ===== SCORE FAIXAS ===== */
+.score-row {
+  display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem;
+  background: var(--bg-soft); border: 1px solid var(--border); border-radius: 12px;
+  margin-bottom: 0.65rem;
 }
-.kanban-header.hot { background: rgba(212,24,108,0.08); color: var(--accent); border: 1px solid rgba(212,24,108,0.15); }
-.kanban-header.warm { background: rgba(217,119,6,0.08); color: var(--warm); border: 1px solid rgba(217,119,6,0.15); }
-.kanban-header.attending { background: rgba(16,185,129,0.08); color: #059669; border: 1px solid rgba(16,185,129,0.15); }
-.kanban-header.sold { background: rgba(107,114,128,0.07); color: #374151; border: 1px solid rgba(107,114,128,0.12); }
-.kanban-count { background: rgba(0,0,0,0.08); border-radius: 100px; padding: 0.1rem 0.5rem; font-size: 0.68rem; margin-left: auto; }
-.lead-card {
-  background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 1rem;
-  cursor: pointer; transition: box-shadow 0.2s, transform 0.15s; border-left: 3px solid transparent;
-}
-.lead-card:hover { box-shadow: 0 4px 18px rgba(30,42,74,0.1); transform: translateY(-1px); }
-.lead-card.hot { border-left-color: var(--accent); }
-.lead-card.warm { border-left-color: var(--warm); }
-.lead-card.attending { border-left-color: #10B981; }
-.lead-card.sold { border-left-color: #6B7280; }
-.lead-card-name { font-weight: 700; font-size: 0.88rem; color: var(--navy); margin-bottom: 0.2rem; }
-.lead-card-detail { font-size: 0.75rem; color: var(--text-body); }
-.lead-card-score {
-  display: inline-block; border-radius: 6px; padding: 0.15rem 0.5rem; font-size: 0.72rem; font-weight: 800; margin-top: 0.4rem;
-}
-.lead-card-score.hot { background: rgba(212,24,108,0.1); color: var(--accent); }
-.lead-card-score.warm { background: rgba(217,119,6,0.1); color: var(--warm); }
-.lead-card-score.attending { background: rgba(16,185,129,0.1); color: #059669; }
-.lead-card-score.sold { background: rgba(107,114,128,0.08); color: #374151; }
+.score-num { font-size: 1.4rem; font-weight: 800; color: var(--navy); min-width: 70px; letter-spacing: -0.03em; }
+.score-info { flex: 1; }
+.score-info .s-title { font-weight: 700; font-size: 0.9rem; color: var(--navy); }
+.score-info .s-action { font-size: 0.82rem; color: var(--text-body); }
+.score-row.hot-row  { border-left: 3px solid var(--accent); }
+.score-row.warm-row { border-left: 3px solid var(--warm); }
+.score-row.cold-row { border-left: 3px solid var(--cold); }
+.score-row.verde-row { border-left: 3px solid #059669; }
 
-/* LEAD DETAIL MODAL */
-.lead-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem; }
-.lead-detail-field { background: var(--bg-soft); border: 1px solid var(--border); border-radius: 10px; padding: 0.75rem 1rem; }
-.lead-detail-field label { font-size: 0.67rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 0.2rem; }
-.lead-detail-field value { font-size: 0.88rem; font-weight: 600; color: var(--navy); }
-.lead-score-display {
-  display: flex; align-items: center; gap: 1.25rem; background: var(--bg-card-gradient);
-  border: 1px solid var(--border); border-radius: 14px; padding: 1.1rem 1.5rem; margin-bottom: 1.25rem;
-}
-.lead-score-num { font-size: 3rem; font-weight: 800; color: var(--accent); line-height: 1; letter-spacing: -0.04em; }
-.lead-score-info h4 { font-weight: 700; font-size: 1rem; color: var(--navy); }
-.lead-score-info p { font-size: 0.8rem; color: var(--text-body); }
-.lead-summary-box, .lead-abordagem-box {
-  border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 0.75rem;
-}
-.lead-summary-box { background: var(--bg-soft); border: 1px solid var(--border); }
-.lead-abordagem-box { background: rgba(212,24,108,0.04); border: 1px solid rgba(212,24,108,0.15); }
-.lead-summary-box h4, .lead-abordagem-box h4 { font-size: 0.72rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.5rem; }
-.lead-summary-box p, .lead-abordagem-box p { font-size: 0.85rem; color: var(--text-body); line-height: 1.6; }
-.lead-abordagem-box p { color: var(--navy); font-weight: 500; }
-
-/* PLATFORM */
-.platform-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-.platform-card {
+/* ===== AGENT CARDS ===== */
+.agent-card {
   background: var(--bg-soft); border: 1px solid var(--border); border-radius: 20px;
-  padding: 2.5rem 2rem; transition: box-shadow 0.3s;
+  padding: 1.75rem; position: relative; overflow: hidden; transition: box-shadow 0.3s, transform 0.3s;
 }
-.platform-card:hover { box-shadow: 0 8px 30px rgba(30,42,74,0.06); }
-.platform-card-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.3rem; }
-.platform-icon {
-  width: 42px; height: 42px; border-radius: 12px;
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+.agent-card:hover { box-shadow: 0 10px 32px rgba(30,42,74,0.08); transform: translateY(-2px); }
+.agent-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--accent), #A78BFA);
 }
-.platform-icon.front { background: var(--accent-light); }
-.platform-icon.back { background: rgba(167,139,250,0.1); }
-.platform-card h3 { font-weight: 700; font-size: 1.05rem; color: var(--navy); }
-.platform-card .card-sub { color: var(--text-dim); font-size: 0.8rem; margin-bottom: 1.5rem; padding-left: 54px; }
-.platform-list { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
-.platform-list li { color: var(--text-body); font-size: 0.88rem; padding-left: 1.4rem; position: relative; line-height: 1.55; }
-.platform-list li::before { content: ''; position: absolute; left: 0; top: 9px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); opacity: 0.6; }
-.platform-tech { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--text-dim); font-size: 0.75rem; font-weight: 500; }
+.agent-num {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 0.5rem;
+}
+.agent-title { font-weight: 800; font-size: 1rem; color: var(--navy); margin-bottom: 0.5rem; }
+.agent-desc { color: var(--text-body); font-size: 0.85rem; line-height: 1.6; }
+.agent-badge {
+  display: inline-block; margin-top: 0.75rem; font-size: 0.7rem; font-weight: 700;
+  background: var(--accent-light); color: var(--accent); padding: 0.2rem 0.6rem; border-radius: 6px;
+}
 
-/* SECURITY */
-.security-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-.security-card {
-  background: var(--bg-soft); border: 1px solid var(--border); border-radius: 16px;
-  padding: 2rem 1.5rem; transition: box-shadow 0.3s;
-}
-.security-card:hover { box-shadow: 0 6px 24px rgba(30,42,74,0.06); }
-.security-card .card-icon {
-  width: 38px; height: 38px; border-radius: 10px; background: var(--accent-light);
-  display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;
-}
-.security-card h3 { font-weight: 700; font-size: 1rem; color: var(--navy); margin-bottom: 1rem; }
-.security-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
-.security-card ul li { color: var(--text-body); font-size: 0.85rem; padding-left: 1.2rem; position: relative; line-height: 1.55; }
-.security-card ul li::before { content: '✓'; position: absolute; left: 0; color: var(--navy); font-weight: 700; font-size: 0.75rem; }
-.partners-bar { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 0.75rem; letter-spacing: 0.02em; }
-
-/* DISPONIBILIDADE */
-.dispo-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 2rem; }
-.dispo-card {
-  background: var(--bg-card-gradient); border: 1px solid var(--border); border-radius: 16px;
-  padding: 1.8rem 1.5rem; text-align: center; transition: transform 0.3s;
-}
-.dispo-card:hover { transform: translateY(-2px); }
-.dispo-card .number { font-size: 2.2rem; font-weight: 800; color: var(--navy); line-height: 1; margin-bottom: 0.4rem; letter-spacing: -0.02em; }
-.dispo-card .label { color: var(--text-body); font-size: 0.82rem; }
-.golive-timeline { margin-top: 3rem; }
-.golive-title { font-weight: 700; font-size: 1.1rem; color: var(--navy); margin-bottom: 1.5rem; }
+/* ===== GOLIVE PHASES ===== */
 .golive-phases { display: flex; flex-direction: column; gap: 0.75rem; }
 .golive-phase {
-  display: flex; align-items: center; gap: 1rem; background: var(--bg-soft);
+  display: flex; align-items: flex-start; gap: 1rem; background: var(--bg-soft);
   border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem 1.5rem;
 }
-.golive-phase .phase-badge {
+.phase-badge {
   flex-shrink: 0; background: var(--accent); color: #fff; font-weight: 700;
-  font-size: 0.72rem; padding: 0.25rem 0.75rem; border-radius: 6px; white-space: nowrap;
+  font-size: 0.72rem; padding: 0.25rem 0.75rem; border-radius: 6px; white-space: nowrap; margin-top: 2px;
 }
-.golive-phase .phase-text { color: var(--text-body); font-size: 0.88rem; line-height: 1.5; }
-.golive-phase .phase-text strong { color: var(--navy); }
+.phase-text { color: var(--text-body); font-size: 0.88rem; line-height: 1.55; }
+.phase-text strong { color: var(--navy); }
 
-/* PRÓXIMOS PASSOS */
-.checklist { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 2rem; max-width: 580px; }
+/* ===== CHECKLIST ===== */
+.checklist { display: flex; flex-direction: column; gap: 0.65rem; max-width: 580px; }
 .checklist-item {
   display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem;
   background: var(--bg-soft); border: 1px solid var(--border); border-radius: 12px;
-  font-size: 0.9rem; color: var(--text-body); transition: border-color 0.3s;
+  font-size: 0.9rem; color: var(--text-body);
 }
 .checklist-item.current {
-  border-color: var(--accent); border-width: 2px; background: var(--accent-lighter);
-  color: var(--navy); font-weight: 600;
+  border-color: var(--accent); border-width: 2px;
+  background: var(--accent-lighter); color: var(--navy); font-weight: 600;
 }
 .checklist-circle {
   width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--text-dim);
@@ -423,35 +333,123 @@ section.visible { opacity: 1; transform: translateY(0); }
 .checklist-item.current .checklist-circle::after { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #fff; }
 .current-tag { font-size: 0.7rem; color: var(--accent); font-weight: 700; margin-left: auto; white-space: nowrap; }
 
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  .kanban-board { grid-template-columns: repeat(2, 1fr); }
+/* ===== INVESTIMENTO TABLE ===== */
+.invest-table { width: 100%; border-collapse: collapse; }
+.invest-table tr { border-bottom: 1px solid var(--border); }
+.invest-table tr:last-child { border-bottom: none; }
+.invest-table td { padding: 0.85rem 1rem; font-size: 0.9rem; }
+.invest-table .i-label { color: var(--text-body); font-weight: 500; }
+.invest-table .i-value { color: var(--navy); font-weight: 700; text-align: right; }
+.invest-table .i-note { font-size: 0.78rem; color: var(--text-dim); display: block; font-weight: 400; }
+
+/* ===== CHAT UI ===== */
+.chat-window {
+  background: #F0F2F5; border-radius: 16px; padding: 1.2rem;
+  display: flex; flex-direction: column; gap: 0.75rem;
+  max-height: 380px; overflow-y: auto;
 }
-@media (max-width: 768px) {
-  section { padding: 6rem 1.2rem 3rem; }
-  .navbar-links { display: none; }
-  .progress-bar { right: 0.5rem; }
-  .progress-dot { width: 6px; height: 6px; }
-  .platform-grid { grid-template-columns: 1fr; }
-  .security-grid { grid-template-columns: 1fr; }
-  .metric-cards { grid-template-columns: repeat(2, 1fr); }
-  .dispo-metrics { grid-template-columns: repeat(2, 1fr); }
-  .hero-pills { flex-direction: column; align-items: center; }
-  .lead-detail-grid { grid-template-columns: 1fr; }
-  .kanban-board { grid-template-columns: repeat(2, 1fr); }
-  .steps-flow { gap: 0.5rem; padding: 1rem; }
+.chat-msg { display: flex; flex-direction: column; max-width: 80%; }
+.chat-msg.ia { align-self: flex-start; }
+.chat-msg.lead { align-self: flex-end; align-items: flex-end; }
+.chat-bubble { padding: 0.6rem 1rem; border-radius: 16px; font-size: 0.85rem; line-height: 1.55; }
+.chat-msg.ia .chat-bubble {
+  background: #fff; color: var(--navy); border-bottom-left-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
 }
-@media (max-width: 480px) {
-  .metric-cards, .dispo-metrics { grid-template-columns: 1fr; }
-  .kanban-board { grid-template-columns: 1fr; }
-  .problema-grid { grid-template-columns: repeat(2, 1fr); }
+.chat-msg.lead .chat-bubble { background: var(--navy); color: #fff; border-bottom-right-radius: 4px; }
+.chat-sender { font-size: 0.67rem; font-weight: 700; color: var(--text-dim); margin-bottom: 0.15rem; text-transform: uppercase; letter-spacing: 0.04em; }
+.chat-msg.ia .chat-sender { color: var(--accent); }
+
+/* ===== MODALS ===== */
+.modal-overlay {
+  display: flex; position: fixed; inset: 0; z-index: 99999;
+  background: rgba(10,15,35,0.6); backdrop-filter: blur(6px);
+  align-items: center; justify-content: center; padding: 2rem;
+  visibility: hidden; opacity: 0;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+  pointer-events: none;
 }
+.modal-overlay.open { visibility: visible; opacity: 1; pointer-events: all; }
+.modal-box {
+  background: #fff; border-radius: 24px; max-width: 680px; width: 100%;
+  max-height: 85vh; overflow-y: auto; padding: 2.5rem;
+  box-shadow: 0 24px 80px rgba(10,15,35,0.25);
+  animation: slideUp 0.3s ease; position: relative;
+}
+@keyframes slideUp { from { transform: translateY(24px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.modal-close {
+  position: absolute; top: 1.2rem; right: 1.2rem;
+  width: 32px; height: 32px; border-radius: 50%; background: var(--bg-soft);
+  border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  color: var(--text-dim); font-size: 1.1rem; transition: background 0.2s; font-family: var(--font);
+}
+.modal-close:hover { background: var(--border); }
+.modal-title { font-size: 1.15rem; font-weight: 800; color: var(--navy); margin-bottom: 0.25rem; }
+.modal-sub { font-size: 0.82rem; color: var(--text-dim); margin-bottom: 1.5rem; }
+
+/* ===== BTN ===== */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: var(--accent); color: #fff; border: none; border-radius: 8px;
+  padding: 0.45rem 1rem; font-size: 0.8rem; font-weight: 600; cursor: pointer;
+  font-family: var(--font); text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover { background: #c91040; transform: translateY(-1px); }
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: transparent; color: var(--navy); border: 1.5px solid var(--border); border-radius: 8px;
+  padding: 0.45rem 1rem; font-size: 0.8rem; font-weight: 600; cursor: pointer;
+  font-family: var(--font); text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+.btn-outline:hover { border-color: var(--navy); background: var(--bg-soft); }
+
+/* ===== HIGHLIGHT BOX ===== */
+.highlight-box {
+  background: var(--accent-lighter); border: 1.5px solid rgba(212,24,108,0.2);
+  border-radius: 16px; padding: 1.5rem 2rem; margin-top: 2rem;
+}
+.highlight-box p { color: var(--navy); font-size: 0.95rem; line-height: 1.7; }
+.highlight-box strong { color: var(--accent); }
+
+/* ===== DIVIDER ===== */
+.divider { height: 1px; background: var(--border); margin: 2rem 0; }
+
+/* ===== SECURITY GRID ===== */
+.security-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
+@media (max-width: 768px) { .security-grid { grid-template-columns: 1fr; } }
+
+/* ===== EVOLUTION CARD ===== */
+.evo-card {
+  background: var(--bg-soft); border: 1px solid var(--border); border-radius: 16px;
+  padding: 1.5rem; position: relative;
+}
+.evo-card .evo-phase {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--text-dim); margin-bottom: 0.5rem;
+}
+.evo-card .evo-title { font-weight: 700; font-size: 0.95rem; color: var(--navy); margin-bottom: 0.4rem; }
+.evo-card .evo-desc { font-size: 0.85rem; color: var(--text-body); line-height: 1.55; }
+.evo-card.highlight-evo { border-color: rgba(212,24,108,0.25); background: var(--accent-lighter); }
+
+/* ===== UTIL ===== */
+.text-accent { color: var(--accent); }
+.text-navy { color: var(--navy); }
+.text-dim { color: var(--text-dim); }
+.fw-800 { font-weight: 800; }
+.mt-1 { margin-top: 1rem; }
+.mt-2 { margin-top: 2rem; }
+.mb-1 { margin-bottom: 1rem; }
+.mb-2 { margin-bottom: 2rem; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; }
+
 @media print {
   .navbar, .progress-bar { display: none; }
-  #hero { background: #F3F0FA !important; }
-  #hero::before { display: none; }
-  section { opacity: 1 !important; transform: none !important; page-break-inside: avoid; padding: 2rem 1rem; min-height: auto; }
-  body, html { background: #fff; }
+  section { min-height: auto; padding: 2rem; }
+}
+@media (max-width: 600px) {
+  .scenarios-grid { grid-template-columns: 1fr !important; }
 }
 </style>
 </head>
@@ -459,540 +457,870 @@ section.visible { opacity: 1; transform: translateY(0); }
 
 <!-- NAVBAR -->
 <nav class="navbar">
-  <div class="navbar-logo">simplifique<span>.</span>ai</div>
+  <div style="display:flex;align-items:center">
+    <div class="navbar-logo">simplifique<span>.</span>ai</div>
+    <span class="navbar-badge">× Tenda</span>
+  </div>
   <ul class="navbar-links">
-    <li><a href="#hero">Início</a></li>
-    <li><a href="#problema">Diagnóstico</a></li>
-    <li><a href="#jornada">Como Funciona</a></li>
-    <li><a href="#painel">Painel</a></li>
-    <li><a href="#plataforma">Plataforma</a></li>
-    <li><a href="#seguranca">Segurança</a></li>
-    <li><a href="#disponibilidade">SLA</a></li>
+    <li><a href="#problema">Problema</a></li>
+    <li><a href="#solucao">Solução</a></li>
+    <li><a href="#arquitetura">Arquitetura</a></li>
+    <li><a href="#implementacao">Implementação</a></li>
+    <li><a href="#investimento">Investimento</a></li>
     <li><a href="#proximos">Próximos Passos</a></li>
   </ul>
 </nav>
 
-<!-- PROGRESS BAR -->
-<div class="progress-bar" id="progressBar">
-  <div class="progress-dot active" data-section="hero"></div>
-  <div class="progress-dot" data-section="problema"></div>
-  <div class="progress-dot" data-section="jornada"></div>
-  <div class="progress-dot" data-section="painel"></div>
-  <div class="progress-dot" data-section="plataforma"></div>
-  <div class="progress-dot" data-section="seguranca"></div>
-  <div class="progress-dot" data-section="disponibilidade"></div>
-  <div class="progress-dot" data-section="proximos"></div>
+<!-- PROGRESS DOTS -->
+<div class="progress-bar">
+  <div class="progress-dot active" title="Início"></div>
+  <div class="progress-dot" title="Problema"></div>
+  <div class="progress-dot" title="Solução"></div>
+  <div class="progress-dot" title="Como Funciona"></div>
+  <div class="progress-dot" title="Arquitetura"></div>
+  <div class="progress-dot" title="Score"></div>
+  <div class="progress-dot" title="Implementação"></div>
+  <div class="progress-dot" title="Segurança"></div>
+  <div class="progress-dot" title="Canal de Voz"></div>
+  <div class="progress-dot" title="Valor Gerado"></div>
+  <div class="progress-dot" title="Investimento"></div>
+  <div class="progress-dot" title="Evolução"></div>
+  <div class="progress-dot" title="Próximos Passos"></div>
 </div>
 
-<!-- SEÇÃO 1 — HERO -->
+<!-- ===== HERO ===== -->
 <section id="hero">
-  <div style="margin-bottom:1.5rem;font-size:1.5rem;font-weight:800;letter-spacing:-0.03em;color:var(--navy);opacity:0.85;">simplifique<span style="color:#D4186C">.</span>ai</div>
-  <h1 class="hero-title">SDR Inteligente 24/7</h1>
-  <p class="hero-desc">Sistema de Qualificação Automatizada de Leads — Construtora Tenda</p>
+  <div class="hero-badge">
+    <span style="width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0"></span>
+    Proposta Comercial · Construtora Tenda
+  </div>
+  <h1 class="hero-title">SDR Inteligente<br>24/7</h1>
+  <p class="hero-desc">Sistema multiagente de qualificação automática de leads — cada vendedor aborda apenas quem tem perfil e intenção de compra.</p>
   <div class="hero-agenda">
-    <div class="hero-agenda-title">Agenda desta apresentação</div>
-    <div class="hero-agenda-items">
-      <div class="hero-agenda-item">Diagnóstico: o problema que o sistema resolve</div>
-      <div class="hero-agenda-item">Demonstração: como o sistema funciona na prática</div>
-      <div class="hero-agenda-item">Painel do Vendedor: visão ao vivo do produto</div>
-      <div class="hero-agenda-item">Arquitetura, Segurança e Compliance LGPD</div>
-      <div class="hero-agenda-item">Q&A e próximos passos para o go-live</div>
+    <p class="hero-agenda-title">O que você vai ver aqui</p>
+    <div class="hero-agenda-grid">
+      <div class="hero-agenda-item">O problema real da operação comercial da Tenda</div>
+      <div class="hero-agenda-item">Como o sistema funciona na prática</div>
+      <div class="hero-agenda-item">A arquitetura multiagente e por que ela importa</div>
+      <div class="hero-agenda-item">Implementação, suporte e segurança</div>
+      <div class="hero-agenda-item">Investimento e próximos passos</div>
+    </div>
+  </div>
+  <div class="hero-scroll" onclick="document.getElementById('problema').scrollIntoView({behavior:'smooth'})">
+    <span>Começar</span>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </div>
+</section>
+
+<!-- ===== PROBLEMA ===== -->
+<section id="problema">
+  <p class="section-label">01 — Diagnóstico</p>
+  <h2 class="section-title">O gargalo invisível<span class="dot">.</span></h2>
+  <p class="section-subtitle">O custo de abordar sem qualificar não aparece em nenhum relatório — mas está lá, todo dia.</p>
+
+  <div class="grid-3" style="margin-bottom:2.5rem">
+    <div class="metric-card">
+      <div class="number">❌</div>
+      <div class="label">Informações incompletas no CRM antes do contato</div>
+    </div>
+    <div class="metric-card">
+      <div class="number" style="font-size:1.8rem">Volume<br>crescente</div>
+      <div class="label">Mais leads, mesma capacidade de triagem humana</div>
+    </div>
+    <div class="metric-card">
+      <div class="number" style="font-size:1.8rem">Potencial<br>perdido</div>
+      <div class="label">Leads quentes esperando enquanto equipe atende frios</div>
     </div>
   </div>
 
-</section>
-
-<!-- SEÇÃO 2 — DIAGNÓSTICO / PROBLEMA -->
-<section id="problema">
-  <div class="section-label">Diagnóstico</div>
-  <h2 class="section-title">Por que 99,5% dos leads<br>nunca chegam ao vendedor<span class="dot">.</span></h2>
-  <div class="problema-grid">
-    <div class="problema-card"><div class="number">8.400</div><div class="label">Leads/mês — só na Bahia</div></div>
-    <div class="problema-card"><div class="number">0,5%</div><div class="label">Taxa de conversão atual</div></div>
-    <div class="problema-card"><div class="number">99,5%</div><div class="label">Leads desperdiçados</div></div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-icon">⏱️</div>
+      <div class="card-title">Ciclo de venda mais longo</div>
+      <div class="card-desc">Vendedores dedicam tempo e energia a contatos que nunca vão converter. O primeiro contato qualificado demora mais do que deveria.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">📉</div>
+      <div class="card-title">Conversão abaixo do potencial</div>
+      <div class="card-desc">Abordagem às cegas gera atrito, desgaste da equipe e oportunidades perdidas por demora — sem que isso apareça nos relatórios convencionais.</div>
+    </div>
   </div>
-  <table class="comparison-table">
-    <thead>
-      <tr>
-        <th>Indicador</th>
-        <th>Tenda Hoje</th>
-        <th>Tenda com IA (conservador)</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>Tempo de resposta</td><td class="val-atual">30min — sem resposta</td><td class="val-ia"><span class="hot">&lt;2 minutos</span></td></tr>
-      <tr><td>Leads abordados</td><td class="val-atual">~30%</td><td class="val-ia">100%</td></tr>
-      <tr><td>Qualificação estruturada</td><td class="val-atual">0%</td><td class="val-ia">70%+</td></tr>
-      <tr><td>Taxa de conversão</td><td class="val-atual">0,5%</td><td class="val-ia">0,75 – 1,0%</td></tr>
-      <tr><td>Vendas/mês Bahia</td><td class="val-atual">42</td><td class="val-ia">63 – 84</td></tr>
-    </tbody>
-  </table>
+
+  <div class="highlight-box">
+    <p>O problema não é falta de leads. É falta de <strong>inteligência antes do contato</strong>. Sem saber quem tem perfil e intenção, toda abordagem é um chute — e chutes custam tempo, energia e conversões.</p>
+  </div>
 </section>
 
-<!-- SEÇÃO 3 — COMO FUNCIONA / JORNADA -->
-<section id="jornada">
-  <div class="section-label">Como funciona</div>
-  <h2 class="section-title">Do anúncio ao vendedor<br>em 5 etapas automáticas<span class="dot">.</span></h2>
+<!-- ===== SOLUÇÃO ===== -->
+<section id="solucao">
+  <p class="section-label">02 — Solução</p>
+  <h2 class="section-title">SDR Inteligente Simplifique<span class="dot">.</span>ai</h2>
+  <p class="section-subtitle">Qualificação automática de 100% da carteira antes de qualquer contato humano.</p>
 
   <div class="steps-flow">
-    <div class="step-node"><div class="step-circle">1</div><div class="step-label">Anúncio</div></div>
-    <div class="step-arrow">→</div>
-    <div class="step-node"><div class="step-circle">2</div><div class="step-label">WhatsApp</div></div>
-    <div class="step-arrow">→</div>
-    <div class="step-node"><div class="step-circle">3</div><div class="step-label">IA Qualifica</div></div>
-    <div class="step-arrow">→</div>
-    <div class="step-node"><div class="step-circle">4</div><div class="step-label">Score</div></div>
-    <div class="step-arrow">→</div>
-    <div class="step-node"><div class="step-circle">5</div><div class="step-label">Vendedor</div></div>
-    <div class="step-arrow">→</div>
-    <div class="step-node"><div class="step-circle" style="background:var(--navy)">✓</div><div class="step-label">Venda</div></div>
+    <div class="step-node">
+      <div class="step-circle">1</div>
+      <span class="step-label">Lead<br>entra</span>
+    </div>
+    <span class="step-arrow">→</span>
+    <div class="step-node">
+      <div class="step-circle">2</div>
+      <span class="step-label">IA consulta<br>CRM</span>
+    </div>
+    <span class="step-arrow">→</span>
+    <div class="step-node">
+      <div class="step-circle">3</div>
+      <span class="step-label">Conversa<br>WhatsApp</span>
+    </div>
+    <span class="step-arrow">→</span>
+    <div class="step-node">
+      <div class="step-circle">4</div>
+      <span class="step-label">Score<br>calculado</span>
+    </div>
+    <span class="step-arrow">→</span>
+    <div class="step-node">
+      <div class="step-circle">5</div>
+      <span class="step-label">CRM<br>atualizado</span>
+    </div>
+    <span class="step-arrow">→</span>
+    <div class="step-node">
+      <div class="step-circle" style="background:var(--navy)">✓</div>
+      <span class="step-label">Vendedor<br>recebe</span>
+    </div>
   </div>
 
-  <div class="timeline">
-    <div class="timeline-item">
-      <div class="timeline-number">1</div>
-      <div class="timeline-title">Captação & Primeiro Contato</div>
-      <div class="timeline-desc">Lead vê anúncio (Facebook/Instagram/Google) e clica no botão WhatsApp. Abre diretamente no número dedicado do vendedor.</div>
-      <span class="timeline-chip">WhatsApp Business API</span>
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-icon">🤖</div>
+      <div class="card-title">100% automático</div>
+      <div class="card-desc">Cada lead da carteira qualificado via WhatsApp antes de qualquer contato humano. Nenhuma triagem manual.</div>
     </div>
-    <div class="timeline-item">
-      <div class="timeline-number">2</div>
-      <div class="timeline-title">Recepção Instantânea
-        <button class="btn-example" onclick="openModal('modal-conversa')">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Ver conversa real
-        </button>
-      </div>
-      <div class="timeline-desc">IA responde imediatamente — sem espera. Apresenta o empreendimento e inicia a qualificação de forma completamente natural. Lead sente que está sendo atendido, não qualificado.</div>
-      <span class="timeline-chip">OpenAI</span>
-      <span class="timeline-chip">Anthropic (backup)</span>
+    <div class="card">
+      <div class="card-icon purple">🕐</div>
+      <div class="card-title">24h × 7 dias</div>
+      <div class="card-desc">Opera independentemente de horário, volume ou disponibilidade da equipe. Fins de semana, feriados, pico de demanda.</div>
     </div>
-    <div class="timeline-item">
-      <div class="timeline-number">3</div>
-      <div class="timeline-title">Qualificação Conversacional</div>
-      <div class="timeline-desc">IA coleta: interesse no imóvel, renda familiar, FGTS disponível, urgência de compra e localização. Em média <strong>10–12 mensagens</strong> para qualificação completa.</div>
-      <span class="timeline-chip">n8n workflows</span>
-      <span class="timeline-chip">Supabase PostgreSQL</span>
+    <div class="card">
+      <div class="card-icon green">🎯</div>
+      <div class="card-title">Construído para a Tenda</div>
+      <div class="card-desc">Fluxo, critérios de score e comportamentos configurados a partir do processo comercial real da Tenda, com integração nativa ao CRM.</div>
     </div>
-    <div class="timeline-item">
-      <div class="timeline-number">4</div>
-      <div class="timeline-title">Score & Classificação Automática
-        <button class="btn-example" onclick="openModal('modal-score')">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Ver como funciona
-        </button>
-      </div>
-      <div class="timeline-desc">Ao encerrar a conversa, uma segunda IA analisa todos os dados coletados, calcula o score (0–100) e classifica automaticamente o lead.</div>
-      <div style="display:flex; gap:0.5rem; margin-top:0.5rem; flex-wrap:wrap;">
-        <span style="background:rgba(212,24,108,0.1);color:var(--accent);border:1px solid rgba(212,24,108,0.2);padding:0.2rem 0.7rem;border-radius:100px;font-size:0.75rem;font-weight:700;">🔥 Quente &gt;70</span>
-        <span style="background:rgba(217,119,6,0.1);color:var(--warm);border:1px solid rgba(217,119,6,0.2);padding:0.2rem 0.7rem;border-radius:100px;font-size:0.75rem;font-weight:700;">🟡 Morno 40–70</span>
-        <span style="background:rgba(107,114,128,0.08);color:var(--cold);border:1px solid rgba(107,114,128,0.15);padding:0.2rem 0.7rem;border-radius:100px;font-size:0.75rem;font-weight:700;">❄ Frio &lt;40</span>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-number">5</div>
-      <div class="timeline-title">Entrega ao Vendedor</div>
-      <div class="timeline-desc">Lead aparece no painel do vendedor em tempo real com contexto completo. Vendedor acessa sabendo tudo — renda, FGTS, urgência e abordagem recomendada.</div>
-      <span class="timeline-chip">Next.js 14 — Vercel Edge Network</span>
-    </div>
+  </div>
+
+  <div class="highlight-box">
+    <p>O vendedor recebe o lead com <strong>score, histórico completo da conversa e contexto registrado no CRM</strong>. Nenhuma abordagem às cegas. Nenhuma informação duplicada.</p>
   </div>
 </section>
 
-<!-- SEÇÃO 4 — PAINEL / KANBAN -->
-<section id="painel">
-  <div class="section-label">Painel do Vendedor</div>
-  <h2 class="section-title">Visão em tempo real<br>de cada lead qualificado<span class="dot">.</span></h2>
-  <p class="section-subtitle">Cada vendedor acessa seu painel pessoal pelo navegador ou celular. Sem instalar nada. Lead chega com contexto completo.</p>
+<!-- ===== COMO FUNCIONA ===== -->
+<section id="como-funciona">
+  <p class="section-label">03 — Operação</p>
+  <h2 class="section-title">Como funciona na prática<span class="dot">.</span></h2>
+  <p class="section-subtitle">Um ciclo completo de qualificação, do primeiro contato ao registro no CRM.</p>
 
-  <div class="kanban-board">
-    <div class="kanban-col">
-      <div class="kanban-header hot">🔥 QUENTES <span class="kanban-count">3</span></div>
-      <div class="lead-card hot" onclick="openModal('modal-lead')">
-        <div class="lead-card-name">João Silva</div>
-        <div class="lead-card-detail">Jardim Europa · 2 quartos</div>
-        <div class="lead-card-score hot">95 / 100</div>
-      </div>
-      <div class="lead-card hot">
-        <div class="lead-card-name">Maria Santos</div>
-        <div class="lead-card-detail">Parque Árvores · 2 quartos</div>
-        <div class="lead-card-score hot">88 / 100</div>
-      </div>
-      <div class="lead-card hot">
-        <div class="lead-card-name">Carlos Ferreira</div>
-        <div class="lead-card-detail">Vista Mar · 3 quartos</div>
-        <div class="lead-card-score hot">81 / 100</div>
-      </div>
-    </div>
-    <div class="kanban-col">
-      <div class="kanban-header warm">🟡 MORNOS <span class="kanban-count">2</span></div>
-      <div class="lead-card warm">
-        <div class="lead-card-name">Pedro Costa</div>
-        <div class="lead-card-detail">Jardim Europa · 2 quartos</div>
-        <div class="lead-card-score warm">62 / 100</div>
-      </div>
-      <div class="lead-card warm">
-        <div class="lead-card-name">Luciana Melo</div>
-        <div class="lead-card-detail">Parque Árvores · 2 quartos</div>
-        <div class="lead-card-score warm">54 / 100</div>
-      </div>
-    </div>
-    <div class="kanban-col">
-      <div class="kanban-header attending">⏳ EM ATENDIMENTO <span class="kanban-count">1</span></div>
-      <div class="lead-card attending">
-        <div class="lead-card-name">Ana Paula</div>
-        <div class="lead-card-detail">Vista Mar · 3 quartos</div>
-        <div class="lead-card-score attending">92 / 100</div>
-      </div>
-    </div>
-    <div class="kanban-col">
-      <div class="kanban-header sold">✅ VENDIDOS <span class="kanban-count">2</span></div>
-      <div class="lead-card sold">
-        <div class="lead-card-name">Carlos Silva</div>
-        <div class="lead-card-detail">R$ 220k · Jardim Europa</div>
-        <div class="lead-card-score sold">Vendido</div>
-      </div>
-      <div class="lead-card sold">
-        <div class="lead-card-name">Renata Souza</div>
-        <div class="lead-card-detail">R$ 195k · Vista Mar</div>
-        <div class="lead-card-score sold">Vendido</div>
-      </div>
-    </div>
-  </div>
-  <p style="margin-top:1rem;font-size:0.78rem;color:var(--text-dim);text-align:center;">
-    👆 Clique em <strong style="color:var(--accent)">João Silva</strong> para ver o card completo do lead
-  </p>
-</section>
-
-<!-- SEÇÃO 5 — PLATAFORMA -->
-<section id="plataforma">
-  <div class="section-label">A plataforma</div>
-  <h2 class="section-title">Dois ambientes<span class="dot">.</span><br>Uma operação integrada<span class="dot">.</span></h2>
-  <div class="platform-grid">
-    <div class="platform-card">
-      <div class="platform-card-header">
-        <div class="platform-icon front">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="#D4186C" stroke-width="2"/><path d="M3 9h18" stroke="#D4186C" stroke-width="2"/><circle cx="6.5" cy="6" r="1" fill="#D4186C"/><circle cx="9.5" cy="6" r="1" fill="#D4186C"/></svg>
+  <div class="grid-2" style="gap:2rem">
+    <div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-number">1</div>
+          <div class="timeline-title">Identificação do lead</div>
+          <div class="timeline-desc">O sistema identifica leads novos na carteira de cada vendedor e consulta o histórico disponível no CRM. Nenhuma informação é solicitada duas vezes.</div>
         </div>
-        <h3>O que o Vendedor vê</h3>
-      </div>
-      <div class="card-sub">Painel de Gestão — Frontend</div>
-      <ul class="platform-list">
-        <li>Painel web responsivo — navegador ou celular, sem instalar nada</li>
-        <li>Kanban de leads: Quente / Morno / Em Atendimento / Vendido</li>
-        <li>Card completo: score, dados coletados, resumo da conversa e abordagem recomendada</li>
-        <li>Alertas em tempo real para leads quentes (Modo Anti-Perda)</li>
-        <li>Histórico 100% das conversas — rastreável e auditável</li>
-        <li>Filtros por período, score, classificação e empreendimento</li>
-      </ul>
-      <div class="platform-tech">Next.js · Vercel</div>
-    </div>
-    <div class="platform-card">
-      <div class="platform-card-header">
-        <div class="platform-icon back">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="#A78BFA" stroke-width="2"/><path d="M12 2v4m0 12v4M2 12h4m12 0h4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83" stroke="#A78BFA" stroke-width="2" stroke-linecap="round"/></svg>
+        <div class="timeline-item">
+          <div class="timeline-number">2</div>
+          <div class="timeline-title">Contato ativo via WhatsApp</div>
+          <div class="timeline-desc">A IA inicia a conversa de forma natural, sem scripts rígidos. Coleta perfil financeiro, vínculo empregatício, restrições de crédito, entrada disponível e timing de compra.</div>
         </div>
-        <h3>O que acontece por baixo</h3>
+        <div class="timeline-item">
+          <div class="timeline-number">3</div>
+          <div class="timeline-title">Apresentação de empreendimentos</div>
+          <div class="timeline-desc">Durante a conversa, o sistema consulta a base de empreendimentos da Tenda em tempo real e apresenta opções aderentes ao perfil declarado pelo lead.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-number">4</div>
+          <div class="timeline-title">Score e registro automático</div>
+          <div class="timeline-desc">Ao encerrar, o sistema calcula o score de 0 a 100 e registra o resultado no CRM via API com todo o contexto da conversa. O vendedor recebe um lead já qualificado.</div>
+          <span class="timeline-chip">API CRM</span>
+          <span class="timeline-chip">Score 0–100</span>
+          <span class="timeline-chip">Contexto completo</span>
+        </div>
       </div>
-      <div class="card-sub">Automação & Infraestrutura — Backend</div>
-      <ul class="platform-list">
-        <li>n8n — automações 24/7 sem interrupção</li>
-        <li>Webhook WhatsApp → n8n → IA → Supabase → Painel (pipeline completo)</li>
-        <li>OpenAI como primário; Anthropic como fallback automático</li>
-        <li>Banco Supabase PostgreSQL 15 — AWS São Paulo — Row Level Security ativo</li>
-        <li>Monitoramento contínuo + alertas automáticos para erros e latência</li>
-        <li>Backups diários automáticos com retenção de 30 dias</li>
-      </ul>
-      <div class="platform-tech">n8n · Supabase PostgreSQL</div>
+    </div>
+    <div>
+      <p style="font-size:0.78rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-dim);margin-bottom:0.75rem">Exemplo de conversa real</p>
+      <div class="chat-window">
+        <div class="chat-msg ia">
+          <span class="chat-sender">SDR · Simplifique.ai</span>
+          <div class="chat-bubble">Olá, João! Aqui é a assistente digital da Tenda. Vi que você demonstrou interesse em um apartamento — posso te ajudar a encontrar a melhor opção? 😊</div>
+        </div>
+        <div class="chat-msg lead">
+          <span class="chat-sender">Lead</span>
+          <div class="chat-bubble">Oi! Sim, estou procurando um apê de 2 quartos em SP.</div>
+        </div>
+        <div class="chat-msg ia">
+          <span class="chat-sender">SDR · Simplifique.ai</span>
+          <div class="chat-bubble">Perfeito! Para encontrar o empreendimento certo pra você, posso te fazer algumas perguntas rápidas? Qual é sua renda familiar mensal aproximada?</div>
+        </div>
+        <div class="chat-msg lead">
+          <span class="chat-sender">Lead</span>
+          <div class="chat-bubble">Em torno de R$ 4.500, eu e minha esposa juntos.</div>
+        </div>
+        <div class="chat-msg ia">
+          <span class="chat-sender">SDR · Simplifique.ai</span>
+          <div class="chat-bubble">Ótimo! Você é CLT, autônomo ou servidor público? E tem alguma restrição de crédito atualmente?</div>
+        </div>
+        <div class="chat-msg lead">
+          <span class="chat-sender">Lead</span>
+          <div class="chat-bubble">CLT, os dois. Sem restrição.</div>
+        </div>
+        <div class="chat-msg ia">
+          <span class="chat-sender">SDR · Simplifique.ai</span>
+          <div class="chat-bubble">Excelente perfil! Com essa renda, vocês se enquadram bem no Minha Casa Minha Vida. Você teria FGTS disponível para entrada? E qual é o prazo ideal para a compra?</div>
+        </div>
+        <div class="chat-msg lead">
+          <span class="chat-sender">Lead</span>
+          <div class="chat-bubble">Tenho uns R$ 12 mil de FGTS. Quero comprar nos próximos 3 meses.</div>
+        </div>
+        <div class="chat-msg ia">
+          <span class="chat-sender">SDR · Simplifique.ai</span>
+          <div class="chat-bubble">🔥 João, encontrei 3 empreendimentos que combinam perfeitamente com o seu perfil em São Paulo! Vou passar para um especialista da Tenda entrar em contato com você ainda hoje. Pode ser?</div>
+        </div>
+      </div>
+      <div style="margin-top:0.75rem;display:flex;align-items:center;gap:0.5rem">
+        <span class="chip-class hot">🔥 Score 91 — Muito Quente</span>
+        <span style="font-size:0.75rem;color:var(--text-dim)">→ entrega urgente ao vendedor</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- SEÇÃO 6 — SEGURANÇA -->
+<!-- ===== ARQUITETURA ===== -->
+<section id="arquitetura">
+  <p class="section-label">04 — Tecnologia</p>
+  <h2 class="section-title">Arquitetura multiagente<span class="dot">.</span></h2>
+  <p class="section-subtitle">Cada etapa executada por um agente especializado e independente — precisão por design, não por acidente.</p>
+
+  <div class="grid-2" style="margin-bottom:2rem">
+    <div class="card" style="border-left:3px solid var(--accent)">
+      <div class="card-icon">🧠</div>
+      <div class="card-title">Por que multiagente?</div>
+      <div class="card-desc">Em sistemas de IA únicos e centralizados, o mesmo modelo que conversa também pontua e registra — aumentando o risco de alucinação e falha em cascata. Na arquitetura multiagente, cada agente opera apenas sobre os dados que recebeu explicitamente, com função restrita.</div>
+    </div>
+    <div class="card" style="border-left:3px solid #A78BFA">
+      <div class="card-icon purple">🛡️</div>
+      <div class="card-title">Resiliência operacional nativa</div>
+      <div class="card-desc">Se um agente falha, os demais continuam operando. Uma falha no registro CRM não interrompe conversas ativas. Uma falha de rede não descarta leads que já estavam em qualificação.</div>
+    </div>
+  </div>
+
+  <div class="grid-4">
+    <div class="agent-card">
+      <div class="agent-num">Agente 01</div>
+      <div class="agent-title">Contexto Inicial</div>
+      <div class="agent-desc">Consulta o CRM antes do primeiro contato. Monta briefing completo com tudo que já existe sobre o lead — renda declarada, interesse registrado e histórico de interações.</div>
+      <span class="agent-badge">Pré-conversa</span>
+    </div>
+    <div class="agent-card">
+      <div class="agent-num">Agente 02</div>
+      <div class="agent-title">SDR Conversacional</div>
+      <div class="agent-desc">Conduz o diálogo no WhatsApp de forma natural. Consulta empreendimentos em tempo real. Salva o estado da conversa a cada resposta — nenhuma informação coletada é perdida.</div>
+      <span class="agent-badge">Conversa ativa</span>
+    </div>
+    <div class="agent-card">
+      <div class="agent-num">Agente 03</div>
+      <div class="agent-title">Scoring</div>
+      <div class="agent-desc">Lê exclusivamente os dados coletados e registrados pelo Agente 02. Sem inferências. Se a conversa foi interrompida, o score é calculado com os dados parciais — nenhum lead é descartado.</div>
+      <span class="agent-badge">Pós-conversa</span>
+    </div>
+    <div class="agent-card">
+      <div class="agent-num">Agente 04</div>
+      <div class="agent-title">Registro CRM</div>
+      <div class="agent-desc">Formata e envia o resultado via API com lógica de reenvio automático em caso de falha. Completamente desacoplado da conversa — pode reprocessar sem afetar nenhum lead ativo.</div>
+      <span class="agent-badge">Integração</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SCORE ===== -->
+<section id="score">
+  <p class="section-label">05 — Qualificação</p>
+  <h2 class="section-title">Score de 0 a 100<span class="dot">.</span></h2>
+  <p class="section-subtitle">Dois pilares de avaliação, quatro faixas de classificação, zero subjetividade.</p>
+
+  <div style="margin-bottom:2rem">
+    <div class="score-row verde-row">
+      <div class="score-num text-accent">85–100</div>
+      <div class="score-info">
+        <div class="s-title">🔥 Muito Quente</div>
+        <div class="s-action">Entrega urgente ao vendedor — contato imediato</div>
+      </div>
+      <span class="chip-class hot">Prioridade máxima</span>
+    </div>
+    <div class="score-row hot-row">
+      <div class="score-num" style="color:var(--warm)">70–84</div>
+      <div class="score-info">
+        <div class="s-title">🌡️ Quente</div>
+        <div class="s-action">Entrega ao vendedor — abordagem no mesmo dia</div>
+      </div>
+      <span class="chip-class warm">Alta prioridade</span>
+    </div>
+    <div class="score-row warm-row">
+      <div class="score-num" style="color:var(--cold)">40–69</div>
+      <div class="score-info">
+        <div class="s-title">🌤️ Morno</div>
+        <div class="s-action">Registrado para reativação futura + mensagem de continuidade após 24h</div>
+      </div>
+      <span class="chip-class cold">Reativação</span>
+    </div>
+    <div class="score-row cold-row">
+      <div class="score-num" style="color:#9CA3AF">0–39</div>
+      <div class="score-info">
+        <div class="s-title">❄️ Frio</div>
+        <div class="s-action">Registrado como improdutivo — encerrado após 24h de inatividade</div>
+      </div>
+      <span class="chip-class cold" style="opacity:0.7">Arquivo</span>
+    </div>
+  </div>
+
+  <div class="grid-2" style="margin-bottom:2rem">
+    <div class="card">
+      <div class="flex-between" style="margin-bottom:1rem">
+        <div class="card-title">Capacidade de compra</div>
+        <span style="font-size:1.4rem;font-weight:800;color:var(--navy)">60 pts</span>
+      </div>
+      <ul class="card-list">
+        <li>Renda familiar compatível com financiamento</li>
+        <li>Tipo de vínculo empregatício (CLT, autônomo, servidor)</li>
+        <li>Ausência de restrições de crédito</li>
+        <li>FGTS ou recursos para entrada disponíveis</li>
+      </ul>
+      <button class="btn-outline" style="margin-top:1rem;font-size:0.75rem" onclick="openModal('modal-capacidade')">Ver pontuação detalhada →</button>
+    </div>
+    <div class="card">
+      <div class="flex-between" style="margin-bottom:1rem">
+        <div class="card-title">Intenção de compra</div>
+        <span style="font-size:1.4rem;font-weight:800;color:var(--navy)">40 pts</span>
+      </div>
+      <ul class="card-list">
+        <li>Timing declarado para a decisão</li>
+        <li>Engajamento e responsividade na conversa</li>
+        <li>Clareza sobre o imóvel buscado</li>
+        <li>Interesse nos empreendimentos apresentados</li>
+      </ul>
+      <button class="btn-outline" style="margin-top:1rem;font-size:0.75rem" onclick="openModal('modal-intencao')">Ver pontuação detalhada →</button>
+    </div>
+  </div>
+
+  <div class="card" style="border-color:rgba(167,139,250,0.25);background:rgba(167,139,250,0.04)">
+    <div class="card-title" style="margin-bottom:0.5rem">⚠️ Leads que param de responder não são descartados</div>
+    <div class="card-desc">O score é calculado com os dados parciais disponíveis, preservando o trabalho já realizado. Leads mornos recebem uma mensagem de continuidade após 24 horas antes do encerramento. Qualquer lead que solicite encerramento tem o atendimento interrompido imediatamente.</div>
+  </div>
+</section>
+
+<!-- ===== IMPLEMENTAÇÃO ===== -->
+<section id="implementacao">
+  <p class="section-label">06 — Entrega</p>
+  <h2 class="section-title">Implementação e suporte<span class="dot">.</span></h2>
+  <p class="section-subtitle">Go-live em 30 dias. Sem instalação no ambiente da Tenda.</p>
+
+  <div class="golive-phases" style="margin-bottom:2.5rem">
+    <div class="golive-phase">
+      <span class="phase-badge">Semana 1–2</span>
+      <div class="phase-text"><strong>Setup e desenvolvimento:</strong> diagnóstico aprofundado, desenvolvimento sob medida, configuração da integração com a API do CRM, conta WhatsApp Business e aprovação de templates junto à Meta.</div>
+    </div>
+    <div class="golive-phase">
+      <span class="phase-badge">Semana 3</span>
+      <div class="phase-text"><strong>Testes e treinamento:</strong> testes completos em ambiente controlado, capacitação da equipe gestora e comercial, entrega de material digital de uso e interpretação dos scores.</div>
+    </div>
+    <div class="golive-phase" style="border-color:rgba(212,24,108,0.25);background:var(--accent-lighter)">
+      <span class="phase-badge">Semana 4</span>
+      <div class="phase-text"><strong>Go-live:</strong> lançamento da operação. A equipe chega ao dia de go-live sabendo exatamente como operar e interpretar os resultados.</div>
+    </div>
+    <div class="golive-phase">
+      <span class="phase-badge">Dias 31–60</span>
+      <div class="phase-text"><strong>Operação assistida (30 dias):</strong> monitoramento ativo, análise das primeiras conversas reais, ajustes finos no fluxo e nos critérios de qualificação com base nos dados reais da base Tenda. Os refinamentos são executados pela Simplifique.ai com base nos feedbacks do time Tenda.</div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-icon green">🎧</div>
+      <div class="card-title">Suporte contínuo</div>
+      <ul class="card-list">
+        <li>Canal dedicado via e-mail exclusivo Tenda</li>
+        <li>SLA de resposta definido em contrato</li>
+        <li>Atualizações de templates incluídas no fixo mensal</li>
+        <li>Suporte às mudanças de política da plataforma WhatsApp</li>
+        <li>Ajustes de fluxo sem custo adicional</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-icon">📋</div>
+      <div class="card-title">O que a Tenda não precisa fazer</div>
+      <ul class="card-list">
+        <li>Nenhuma instalação de software interno</li>
+        <li>Nenhuma gestão de conta WhatsApp Business</li>
+        <li>Nenhum monitoramento de templates Meta</li>
+        <li>Nenhuma manutenção de infraestrutura</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SEGURANÇA ===== -->
 <section id="seguranca">
-  <div class="section-label">Segurança & LGPD</div>
-  <h2 class="section-title">Construído para<br>ambientes corporativos<span class="dot">.</span></h2>
-  <p class="section-subtitle">Todos os dados da Tenda pertencem 100% à Tenda. Exportação irrestrita a qualquer momento.</p>
-  <div class="security-grid">
-    <div class="security-card">
-      <div class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5.25-3.4 10.14-8 12-4.6-1.86-8-6.75-8-12V6l8-4z" stroke="#D4186C" stroke-width="2"/></svg></div>
-      <h3>Proteção dos Dados</h3>
-      <ul>
-        <li>Em trânsito: TLS 1.3 obrigatório</li>
-        <li>Em repouso: AES-256 (Supabase nativo)</li>
-        <li>Senhas: bcrypt via Supabase Auth</li>
-        <li>Banco no Brasil: AWS São Paulo</li>
-      </ul>
-    </div>
-    <div class="security-card">
-      <div class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="10" rx="2" stroke="#D4186C" stroke-width="2"/><path d="M8 11V7a4 4 0 118 0v4" stroke="#D4186C" stroke-width="2"/></svg></div>
-      <h3>Controle de Acesso</h3>
-      <ul>
-        <li>MFA obrigatório: Admin e Gestor (Google Authenticator TOTP)</li>
-        <li>MFA opcional: Vendedores</li>
-        <li>Row Level Security: cada vendedor vê só seus leads</li>
-        <li>Perfis: Admin / Gestor / Vendedor</li>
-        <li>Logs de auditoria — 12 meses de retenção</li>
-      </ul>
-    </div>
-    <div class="security-card">
-      <div class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4m5 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#D4186C" stroke-width="2"/></svg></div>
-      <h3>Conformidade LGPD</h3>
-      <ul>
-        <li>Contrato DPA com OpenAI e Anthropic</li>
-        <li>Política de incidentes documentada</li>
-        <li>Dados processados por IA não usados para treinamento</li>
-        <li>Retenção configurável; exclusão a qualquer momento</li>
-      </ul>
-    </div>
-    <div class="security-card">
-      <div class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h7" stroke="#D4186C" stroke-width="2" stroke-linecap="round"/></svg></div>
-      <h3>Segregação de Dados</h3>
-      <ul>
-        <li>Isolamento lógico por cliente (single-tenant logic)</li>
-        <li>Banco dedicado por cliente no Supabase</li>
-        <li>Variáveis de ambiente separadas por projeto</li>
-        <li>Firewall dedicado por servidor</li>
-      </ul>
-    </div>
-  </div>
-  <div class="partners-bar">Supabase — SOC 2 &nbsp;·&nbsp; Hetzner — ISO 27001 &nbsp;·&nbsp; Vercel — SOC 2 &nbsp;·&nbsp; OpenAI / Anthropic — DPA LGPD &nbsp;·&nbsp; Meta — WhatsApp Business</div>
-</section>
+  <p class="section-label">07 — Compliance</p>
+  <h2 class="section-title">Segurança e conformidade<span class="dot">.</span></h2>
+  <p class="section-subtitle">LGPD, dados em território nacional, isolamento por cliente.</p>
 
-<!-- SEÇÃO 7 — DISPONIBILIDADE -->
-<section id="disponibilidade">
-  <div class="section-label">Disponibilidade & SLA</div>
-  <h2 class="section-title">Infraestrutura que não para<span class="dot">.</span></h2>
-  <div class="dispo-metrics">
-    <div class="dispo-card"><div class="number">99%</div><div class="label">Uptime mensal (esforço contratual)</div></div>
-    <div class="dispo-card"><div class="number">30 dias</div><div class="label">Retenção de backups (diários)</div></div>
-    <div class="dispo-card"><div class="number">24/7</div><div class="label">Monitoramento ativo</div></div>
-    <div class="dispo-card"><div class="number">48h</div><div class="label">Aviso prévio para manutenções</div></div>
-  </div>
-  <div class="golive-timeline">
-    <h3 class="golive-title">Linha do tempo para o Go-Live</h3>
-    <div class="golive-phases">
-      <div class="golive-phase"><span class="phase-badge">Fase 1 — até 40 dias</span><span class="phase-text"><strong>Setup & Desenvolvimento:</strong> diagnóstico 5 dias, configuração WhatsApp API, treinamento base de conhecimento, dashboards, testes 100+ conversas</span></div>
-      <div class="golive-phase"><span class="phase-badge">Fase 2 — 90 dias</span><span class="phase-text"><strong>Operação Ativa:</strong> plataforma 24/7 com 4 agentes piloto, relatórios semanais e suporte contínuo</span></div>
-      <div class="golive-phase"><span class="phase-badge">Fase 3 — D+120</span><span class="phase-text"><strong>Análise & Decisão:</strong> resultados do piloto, otimizações identificadas e decisão de expansão nacional</span></div>
+  <div class="security-grid" style="margin-bottom:2rem">
+    <div class="card">
+      <div class="card-icon">🔒</div>
+      <div class="card-title">LGPD</div>
+      <div class="card-desc">Dados processados exclusivamente para qualificação. Simplifique.ai atua como operadora, com responsabilidades formalizadas em contrato.</div>
     </div>
+    <div class="card">
+      <div class="card-icon purple">🏢</div>
+      <div class="card-title">Dados em território nacional</div>
+      <div class="card-desc">Toda a infraestrutura de banco de dados opera na região AWS São Paulo. Nenhum dado da Tenda sai do Brasil.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon green">🛡️</div>
+      <div class="card-title">Isolamento e criptografia</div>
+      <div class="card-desc">Isolamento por cliente, controle de acesso por perfil, criptografia em trânsito e em repouso em todos os fornecedores.</div>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Requisito</th>
+          <th>Como atendemos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Finalidade do tratamento</td><td class="val-ia">Exclusivamente qualificação de leads da Tenda</td></tr>
+        <tr><td>Localização dos dados</td><td class="val-ia"><span class="highlight">AWS São Paulo</span> — território nacional</td></tr>
+        <tr><td>Acesso aos dados</td><td class="val-ia">Controle por perfil com logs de auditoria</td></tr>
+        <tr><td>Fornecedores IA</td><td class="val-ia">DPA (acordo de processamento) assinado com todos</td></tr>
+        <tr><td>Criptografia</td><td class="val-ia">TLS em trânsito + AES-256 em repouso</td></tr>
+        <tr><td>Responsabilidade legal</td><td class="val-ia">Formalizada como operadora em contrato</td></tr>
+      </tbody>
+    </table>
   </div>
 </section>
 
-<!-- SEÇÃO 8 — PRÓXIMOS PASSOS -->
+<!-- ===== CANAL DE VOZ ===== -->
+<section id="canal-voz">
+  <p class="section-label">08 — Estratégia de Canais</p>
+  <h2 class="section-title">WhatsApp agora. Voz a seguir<span class="dot">.</span></h2>
+  <p class="section-subtitle">A decisão de ativar o canal de voz com dados reais em mãos — não com estimativas — é o que protege o investimento da Tenda e garante que a POC 2 entre com ROI comprovado antes de ser aprovada.</p>
+
+  <div class="steps-flow" style="margin-bottom:2rem">
+    <div class="step-node">
+      <div class="step-circle">POC 1</div>
+      <span class="step-label">WhatsApp<br>go-live 30 dias</span>
+    </div>
+    <span class="step-arrow">→</span>
+    <div class="step-node">
+      <div class="step-circle" style="background:var(--navy);font-size:0.7rem;line-height:1.2;text-align:center">30<br>dias</div>
+      <span class="step-label">dados reais<br>da operação</span>
+    </div>
+    <span class="step-arrow">→</span>
+    <div class="step-node">
+      <div class="step-circle">POC 2</div>
+      <span class="step-label">Canal de Voz<br>+ WhatsApp</span>
+    </div>
+    <span class="step-arrow">→</span>
+    <div class="step-node">
+      <div class="step-circle" style="background:#059669">✓</div>
+      <span class="step-label">operação<br>multicanal</span>
+    </div>
+  </div>
+
+  <div style="margin-bottom:2rem">
+    <p style="font-size:0.78rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-dim);margin-bottom:1rem">Por que essa sequência entrega mais</p>
+    <div class="grid-2" style="gap:1rem">
+      <div class="card" style="padding:1.25rem 1.5rem">
+        <div style="display:flex;align-items:flex-start;gap:0.75rem">
+          <div style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;font-size:0.78rem;display:flex;align-items:center;justify-content:center">1</div>
+          <div>
+            <div class="card-title" style="font-size:0.9rem;margin-bottom:0.3rem">Risco de entrega</div>
+            <div class="card-desc" style="font-size:0.82rem">O canal de voz requer configuração e validação de componentes fora do pipeline WhatsApp: síntese de voz em português com naturalidade adequada ao perfil do lead, transcrição precisa em condições reais de áudio de ligação e calibração da taxa de atendimento — ligações de IA têm comportamento diferente de ligações humanas. Cada ponto exige testes em condições reais com prazo não controlável na fase de planejamento. A POC 1 elimina essa incerteza e coloca o sistema em produção em 30 dias.</div>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="padding:1.25rem 1.5rem">
+        <div style="display:flex;align-items:flex-start;gap:0.75rem">
+          <div style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;font-size:0.78rem;display:flex;align-items:center;justify-content:center">2</div>
+          <div>
+            <div class="card-title" style="font-size:0.9rem;margin-bottom:0.3rem">Custo sem baseline</div>
+            <div class="card-desc" style="font-size:0.82rem">O canal de voz tem custo variável por ligação. Sem saber quantos leads da base Tenda não respondem no WhatsApp, é impossível estimar esse custo com precisão — e impossível para a Tenda aprovar um orçamento responsável. A POC 1 produz esse número. A POC 2 entra com orçamento calculado, não com estimativa.</div>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="padding:1.25rem 1.5rem">
+        <div style="display:flex;align-items:flex-start;gap:0.75rem">
+          <div style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;font-size:0.78rem;display:flex;align-items:center;justify-content:center">3</div>
+          <div>
+            <div class="card-title" style="font-size:0.9rem;margin-bottom:0.3rem">Valor incremental incerto</div>
+            <div class="card-desc" style="font-size:0.82rem">Se 75% da base responde no WhatsApp, a voz impacta apenas 25% dos leads. Se 50% não responde, a voz se torna crítica e o ROI é imediato. Esse número não existe hoje. Ativar voz antes de tê-lo é tomar decisão de investimento sem dado. A POC 1 produz esse dado em 30 dias de operação real.</div>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="padding:1.25rem 1.5rem">
+        <div style="display:flex;align-items:flex-start;gap:0.75rem">
+          <div style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;font-size:0.78rem;display:flex;align-items:center;justify-content:center">4</div>
+          <div>
+            <div class="card-title" style="font-size:0.9rem;margin-bottom:0.3rem">Time-to-value</div>
+            <div class="card-desc" style="font-size:0.82rem">A POC 1 entrega leads qualificados para os vendedores em 30 dias. Incluir voz no escopo inicial atrasa esse momento pelas dependências do ponto 1. A Tenda começaria a ver resultado semanas depois do que é possível — risco real num projeto que ainda está sendo validado internamente.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2" style="margin-bottom:2rem">
+    <div class="card" style="border-color:rgba(212,24,108,0.2);border-left:3px solid var(--accent)">
+      <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.75rem">
+        <span class="chip-class hot" style="font-size:0.7rem">POC 1 · Agora</span>
+      </div>
+      <div class="card-title">WhatsApp — base sólida em 30 dias</div>
+      <div class="card-desc" style="margin-top:0.5rem">A POC 1 entrega a operação completa de qualificação via WhatsApp e, junto com ela, os dados que tornam a POC 2 muito mais precisa e previsível.</div>
+      <ul class="card-list" style="margin-top:0.75rem">
+        <li>Sistema operacional, integrado ao CRM, com score funcionando</li>
+        <li>Taxa de resposta real da base mapeada</li>
+        <li>Pipeline de qualificação validado com dados da Tenda</li>
+      </ul>
+    </div>
+    <div class="card" style="border-left:3px solid #A78BFA">
+      <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.75rem">
+        <span class="chip-class" style="background:rgba(167,139,250,0.1);color:#7C3AED;border-color:rgba(167,139,250,0.3);font-size:0.7rem">POC 2 · Após 30 dias de operação</span>
+      </div>
+      <div class="card-title">Canal de Voz — ativado com dados, não com estimativas</div>
+      <div class="card-desc" style="margin-top:0.5rem">Quando a POC 1 revela a taxa de não-resposta no WhatsApp, o canal de voz entra com escopo e custo definidos com precisão. O fluxo: lead não responde o WhatsApp em X horas configuráveis — o sistema aciona automaticamente uma ligação. A IA fala com voz natural sintetizada em tempo real, o lead responde por áudio, o sistema transcreve automaticamente e a qualificação continua de onde parou no WhatsApp — mesmo score, mesmo CRM, mesmo pipeline já validado na POC 1.</div>
+      <ul class="card-list" style="margin-top:0.75rem">
+        <li>Regra de canal único: lead responde em qualquer canal, o outro é desativado imediatamente para aquele lead</li>
+        <li>Score e registro CRM idênticos à POC 1 — só o canal de entrada muda</li>
+        <li>Setup específico para configuração do canal de voz incluído no escopo da POC 2</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card" style="border-color:rgba(167,139,250,0.25);background:rgba(167,139,250,0.04);margin-top:1.5rem">
+    <div class="flex-between" style="align-items:flex-start;gap:2rem">
+      <div style="flex:1">
+        <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-dim);margin-bottom:0.5rem">POC 2 — Estrutura de investimento</div>
+        <div class="card-desc" style="margin-bottom:0.75rem">O canal de voz tem estrutura de custo própria, adicional à POC 1. Setup único para configuração do canal mais custo variável por lead abordado via ligação, referente à síntese de voz e transcrição — faturado diretamente na conta da Tenda, sem markup.</div>
+        <div class="card-desc" style="font-size:0.8rem;color:var(--text-dim)">Escopo completo e cronograma da POC 2 apresentados após 30 dias de operação da POC 1, com dados reais da base Tenda em mãos.</div>
+      </div>
+      <div style="flex-shrink:0;text-align:right;min-width:180px">
+        <div style="margin-bottom:1rem">
+          <div style="font-size:0.7rem;color:var(--text-dim);margin-bottom:0.2rem">Setup canal de voz</div>
+          <div style="font-size:1.6rem;font-weight:800;color:var(--navy);letter-spacing:-0.03em">R$ 2.490</div>
+          <div style="font-size:0.7rem;color:var(--text-dim)">único · escopo POC 2</div>
+        </div>
+        <div>
+          <div style="font-size:0.7rem;color:var(--text-dim);margin-bottom:0.2rem">Custo por ligação (adicional ao R$ 1,80/lead)</div>
+          <div style="font-size:1.6rem;font-weight:800;color:var(--navy);letter-spacing:-0.03em">~R$ 0,65</div>
+          <div style="font-size:0.7rem;color:var(--text-dim)">síntese de voz + transcrição · conta Tenda</div>
+          <div style="font-size:0.7rem;color:#7C3AED;font-weight:600;margin-top:0.3rem">Total estimado por lead via voz: ~R$ 2,45</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VALOR GERADO ===== -->
+<section id="valor">
+  <p class="section-label">09 — Impacto</p>
+  <h2 class="section-title">Valor gerado para a Tenda<span class="dot">.</span></h2>
+  <p class="section-subtitle">Do operacional ao estratégico — impacto imediato e ativo crescente.</p>
+
+  <div class="grid-3" style="margin-bottom:2rem">
+    <div class="metric-card">
+      <div class="number">100%</div>
+      <div class="label">dos leads qualificados antes do contato humano</div>
+    </div>
+    <div class="metric-card">
+      <div class="number">24/7</div>
+      <div class="label">operação contínua independente de volume ou horário</div>
+    </div>
+    <div class="metric-card">
+      <div class="number">0</div>
+      <div class="label">abordagens às cegas — vendedor sempre parte de contexto validado</div>
+    </div>
+  </div>
+
+  <div class="grid-2" style="margin-bottom:2rem">
+    <div class="card">
+      <div class="card-icon">⚡</div>
+      <div class="card-title">Impacto operacional imediato</div>
+      <ul class="card-list">
+        <li>Ciclo de venda mais curto — primeiro contato humano já parte de lead validado</li>
+        <li>Equipe focada em leads com real potencial de fechamento</li>
+        <li>Zero perdas por timing — leads fora do horário qualificados da mesma forma</li>
+        <li>CRM atualizado automaticamente com contexto completo de cada conversa</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-icon purple">📊</div>
+      <div class="card-title">Ativo estratégico crescente</div>
+      <ul class="card-list">
+        <li>Base histórica de qualificações estruturada — não existe hoje em nenhum sistema</li>
+        <li>Dados de perfil, intenção e comportamento da base da Tenda</li>
+        <li>Fundação para inteligência preditiva e campanhas segmentadas</li>
+        <li>Decisões comerciais baseadas em evidência, não em estimativas</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Situação atual</th>
+          <th>Com SDR Inteligente</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="val-atual">Vendedor aborda sem saber o perfil do lead</td><td class="val-ia">Vendedor recebe lead com <span class="highlight">score e contexto completo</span></td></tr>
+        <tr><td class="val-atual">Triagem manual consome tempo da equipe</td><td class="val-ia">100% da triagem automatizada — <span class="highlight">zero esforço de triagem</span></td></tr>
+        <tr><td class="val-atual">Leads fora do horário ficam sem resposta</td><td class="val-ia">Qualificação <span class="highlight">24h × 7 dias</span>, sem atrasos</td></tr>
+        <tr><td class="val-atual">CRM com informações incompletas e inconsistentes</td><td class="val-ia">CRM atualizado automaticamente a cada qualificação</td></tr>
+        <tr><td class="val-atual">Sem dados estruturados sobre comportamento dos leads</td><td class="val-ia"><span class="highlight">Base histórica</span> acumulada e estruturada após 90 dias</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== INVESTIMENTO ===== -->
+<section id="investimento">
+  <p class="section-label">10 — Proposta</p>
+  <h2 class="section-title">Investimento<span class="dot">.</span></h2>
+  <p class="section-subtitle">Estrutura clara, sem surpresas — custo de IA com visibilidade total na conta da Tenda.</p>
+
+  <div class="grid-2" style="margin-bottom:2rem">
+    <div class="card" style="border-color:rgba(212,24,108,0.2)">
+      <div class="card-title" style="margin-bottom:1.25rem">Estrutura de cobrança</div>
+      <table class="invest-table">
+        <tr>
+          <td class="i-label">Setup único</td>
+          <td class="i-value">R$ 14.490<span class="i-note">desenvolvimento + integração CRM + WhatsApp Business + estruturação da base de conhecimento RAG</span></td>
+        </tr>
+        <tr>
+          <td class="i-label">Fixo mensal</td>
+          <td class="i-value">R$ 4.490/mês<span class="i-note">suporte, templates, ajustes e monitoramento</span></td>
+        </tr>
+        <tr>
+          <td class="i-label">Por ativação WhatsApp</td>
+          <td class="i-value">R$ 0,55/lead<span class="i-note">inclui custo Meta + gestão da conta WhatsApp Business</span></td>
+        </tr>
+        <tr>
+          <td class="i-label">Custo de IA</td>
+          <td class="i-value">~R$ 1,80/lead<span class="i-note">estimativa média por lead · pago diretamente ao provedor pela Tenda — sem markup</span></td>
+        </tr>
+        <tr style="border-top:2px solid var(--border)">
+          <td class="i-label" style="padding-top:1.1rem">
+            POC 2 — Canal de Voz
+            <span style="display:inline-block;margin-left:0.4rem;font-size:0.68rem;font-weight:700;background:rgba(167,139,250,0.1);color:#7C3AED;border:1px solid rgba(167,139,250,0.3);padding:0.1rem 0.5rem;border-radius:4px">Próxima etapa</span>
+          </td>
+          <td class="i-value" style="padding-top:1.1rem">
+            R$ 2.490 setup + ~R$ 0,65/ligação
+            <span class="i-note">setup único para canal de voz + custo variável por lead abordado via ligação (síntese + transcrição, conta Tenda) · escopo detalhado após POC 1</span>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:1rem">
+      <div class="card">
+        <div class="card-icon green">✅</div>
+        <div class="card-title">O que está incluído no fixo mensal</div>
+        <ul class="card-list">
+          <li>Suporte dedicado com SLA contratual</li>
+          <li>Atualizações e aprovação de templates Meta</li>
+          <li>Ajustes de fluxo e critérios de qualificação</li>
+          <li>Monitoramento ativo do sistema</li>
+          <li>Suporte às mudanças de política da plataforma</li>
+        </ul>
+      </div>
+      <div class="highlight-box" style="margin:0">
+        <p>O custo de IA é pago diretamente pela Tenda ao provedor, com <strong>visibilidade total de consumo</strong> e <strong>zero markup</strong> da Simplifique.ai.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="background:var(--navy);border-color:var(--navy)">
+    <div style="color:rgba(255,255,255,0.6);font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.25rem">
+      Estimativa de custo mensal — dois cenários
+    </div>
+
+    <div class="scenarios-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
+      <div>
+        <div style="font-size:0.72rem;font-weight:700;color:rgba(255,255,255,0.45);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.75rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(255,255,255,0.1)">Cenário conservador · 500 leads/mês</div>
+        <div style="display:flex;flex-direction:column;gap:0.6rem">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:0.82rem;color:rgba(255,255,255,0.6)">Ativações WhatsApp</span>
+            <span style="font-size:0.95rem;font-weight:700;color:#fff">R$ 275</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:0.82rem;color:rgba(255,255,255,0.6)">Custo IA estimado</span>
+            <span style="font-size:0.95rem;font-weight:700;color:#fff">R$ 900</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:0.82rem;color:rgba(255,255,255,0.6)">Fixo mensal</span>
+            <span style="font-size:0.95rem;font-weight:700;color:#fff">R$ 4.490</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding-top:0.5rem;border-top:1px solid rgba(255,255,255,0.15)">
+            <span style="font-size:0.85rem;font-weight:700;color:rgba(255,255,255,0.9)">Total estimado</span>
+            <span style="font-size:1.15rem;font-weight:800;color:var(--accent)">R$ 5.665</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div style="font-size:0.72rem;font-weight:700;color:rgba(255,255,255,0.45);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.75rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(255,255,255,0.1)">Cenário realista · 1.500 leads/mês</div>
+        <div style="display:flex;flex-direction:column;gap:0.6rem">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:0.82rem;color:rgba(255,255,255,0.6)">Ativações WhatsApp</span>
+            <span style="font-size:0.95rem;font-weight:700;color:#fff">R$ 825</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:0.82rem;color:rgba(255,255,255,0.6)">Custo IA estimado</span>
+            <span style="font-size:0.95rem;font-weight:700;color:#fff">R$ 2.700</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:0.82rem;color:rgba(255,255,255,0.6)">Fixo mensal</span>
+            <span style="font-size:0.95rem;font-weight:700;color:#fff">R$ 4.490</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding-top:0.5rem;border-top:1px solid rgba(255,255,255,0.15)">
+            <span style="font-size:0.85rem;font-weight:700;color:rgba(255,255,255,0.9)">Total estimado</span>
+            <span style="font-size:1.15rem;font-weight:800;color:var(--accent)">R$ 8.015</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:1.25rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.1);font-size:0.75rem;color:rgba(255,255,255,0.4);line-height:1.6">
+      * Custo de IA calculado com base em ~R$ 1,80 por lead processado. Valor real varia conforme duração e engajamento de cada conversa — leads que encerram mais cedo têm custo menor. Custo IA pago diretamente pela Tenda ao provedor, sem markup.
+    </div>
+  </div>
+</section>
+
+<!-- ===== EVOLUÇÃO ===== -->
+<section id="evolucao">
+  <p class="section-label">11 — Visão de Longo Prazo</p>
+  <h2 class="section-title">Sobre a base operacional<span class="dot">.</span></h2>
+  <p class="section-subtitle">O SDR é a fundação. Sobre ela, cada evolução amplifica o valor com dados reais da Tenda.</p>
+
+  <div class="grid-3">
+    <div class="evo-card highlight-evo">
+      <div class="evo-phase">Fase 1 · Atual</div>
+      <div class="evo-title">SDR Inteligente 24/7</div>
+      <div class="evo-desc">Qualificação automática de 100% da carteira via WhatsApp. Score, contexto e registro automático no CRM.</div>
+    </div>
+    <div class="evo-card">
+      <div class="evo-phase">Fase 2 · Após 30 dias</div>
+      <div class="evo-title">Canal de Voz (POC 2)</div>
+      <div class="evo-desc">Ligação automática para leads que não respondem WhatsApp. Mesmo pipeline de qualificação, canal adicional com escopo definido pelos dados da operação.</div>
+    </div>
+    <div class="evo-card">
+      <div class="evo-phase">Fase 3 · Após 60 dias</div>
+      <div class="evo-title">Dashboard Gerencial</div>
+      <div class="evo-desc">Score e funil em tempo real para gestores. Visibilidade por vendedor, período e perfil de lead. Decisões baseadas em dados, não em intuição.</div>
+    </div>
+    <div class="evo-card">
+      <div class="evo-phase">Fase 4 · Após 90 dias</div>
+      <div class="evo-title">Inteligência Preditiva</div>
+      <div class="evo-desc">Identificação do perfil com maior probabilidade de conversão. Alertas automáticos de oportunidade. Predição de propensão com base no histórico acumulado.</div>
+    </div>
+    <div class="evo-card">
+      <div class="evo-phase">Fase 5 · Após 90 dias</div>
+      <div class="evo-title">Campanhas de Reativação</div>
+      <div class="evo-desc">Leads mornos e frios abordados com templates diferenciados, operando sobre a base histórica — clusters com perfil similar a leads que já converteram.</div>
+    </div>
+    <div class="evo-card" style="background:transparent;border-style:dashed;display:flex;align-items:center;justify-content:center;min-height:160px">
+      <div style="text-align:center;color:var(--text-dim)">
+        <div style="font-size:1.5rem;margin-bottom:0.4rem">+</div>
+        <div style="font-size:0.82rem;font-weight:500">Evoluções futuras<br>baseadas nos dados reais<br>da Tenda</div>
+      </div>
+    </div>
+  </div>
+
+  <p style="font-size:0.75rem;color:var(--text-dim);margin-top:1.5rem;line-height:1.6">* As evoluções das fases 2 a 5 exigem desenvolvimento adicional e não estão incluídas nesta proposta. Escopo e investimento definidos sob consulta a partir dos dados da operação.</p>
+</section>
+
+<!-- ===== PRÓXIMOS PASSOS ===== -->
 <section id="proximos">
-  <div class="section-label">Roadmap</div>
-  <h2 class="section-title">Próximos passos<br>para o go-live<span class="dot">.</span></h2>
-  <div class="checklist">
+  <p class="section-label">12 — Próximos Passos</p>
+  <h2 class="section-title">Do aqui para o go-live<span class="dot">.</span></h2>
+  <p class="section-subtitle">Quatro etapas simples para começar a qualificar a carteira da Tenda em 30 dias.</p>
+
+  <div class="checklist" style="margin-bottom:3rem;max-width:640px">
     <div class="checklist-item current">
       <div class="checklist-circle"></div>
-      Validação técnica e compliance — TI + Jurídico
-      <span class="current-tag">← estamos aqui</span>
+      Validação e aprovação desta proposta
+      <span class="current-tag">← Você está aqui</span>
     </div>
-    <div class="checklist-item"><div class="checklist-circle"></div>D+2 — Seleção dos 4 agentes piloto (2 high + 2 low performers)</div>
-    <div class="checklist-item"><div class="checklist-circle"></div>D+5 — Contrato + NDA + pagamento (50% setup)</div>
-    <div class="checklist-item"><div class="checklist-circle"></div>D+7–11 — Diagnóstico e base de conhecimento (5 dias com agentes)</div>
-    <div class="checklist-item"><div class="checklist-circle"></div>D+40 — Go-live 24/7 · Treinamento equipe (2h remoto)</div>
+    <div class="checklist-item">
+      <div class="checklist-circle"></div>
+      Assinatura do contrato
+    </div>
+    <div class="checklist-item">
+      <div class="checklist-circle"></div>
+      Kick-off técnico — diagnóstico aprofundado, dados para base de conhecimento e comportamento da IA
+    </div>
+    <div class="checklist-item">
+      <div class="checklist-circle"></div>
+      Desenvolvimento, treinamento e go-live em 30 dias
+    </div>
+  </div>
+
+  <div class="card" style="background:var(--hero-gradient);border:none;padding:3rem 2.5rem;text-align:center;position:relative;overflow:hidden">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 120%, rgba(255,255,255,0.4) 0%, transparent 70%)"></div>
+    <div style="position:relative;z-index:1">
+      <div class="navbar-logo" style="font-size:1.2rem;margin-bottom:0.5rem;display:inline-block">simplifique<span style="color:var(--accent)">.</span>ai</div>
+      <h3 style="font-size:1.6rem;font-weight:800;color:var(--navy);letter-spacing:-0.03em;margin-bottom:0.75rem">Pronto para começar<span style="color:var(--accent)">?</span></h3>
+      <p style="color:var(--navy-light);max-width:420px;margin:0 auto;font-size:0.95rem;line-height:1.65">30 dias para a Tenda ter 100% dos leads qualificados antes de qualquer contato humano.</p>
+    </div>
   </div>
 </section>
 
-<div style="height:4rem"></div>
-
-<!-- MODAL: CONVERSA REAL -->
-<div class="modal-overlay" id="modal-conversa" onclick="closeOnOverlay(event, 'modal-conversa')">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeModal('modal-conversa')">✕</button>
-    <div class="modal-title">💬 Conversa Real com IA</div>
-    <div class="modal-sub">Exemplo de qualificação completa em ~10 mensagens</div>
-    <div class="chat-window">
-      <div class="chat-msg ia">
-        <div class="chat-sender">IA Sara</div>
-        <div class="chat-bubble">Oi João! Vi que você se interessou pelo Jardim Europa. Conhece a região de Lauro Freitas?</div>
-      </div>
-      <div class="chat-msg lead">
-        <div class="chat-sender">João</div>
-        <div class="chat-bubble">Conheço sim, moro perto</div>
-      </div>
-      <div class="chat-msg ia">
-        <div class="chat-sender">IA Sara</div>
-        <div class="chat-bubble">Que legal! Você está procurando 2 ou 3 quartos?</div>
-      </div>
-      <div class="chat-msg lead">
-        <div class="chat-sender">João</div>
-        <div class="chat-bubble">2 quartos mesmo</div>
-      </div>
-      <div class="chat-msg ia">
-        <div class="chat-sender">IA Sara</div>
-        <div class="chat-bubble">Perfeito! Os de 2 quartos saem a partir de R$ 189 mil. Você tem FGTS para usar como entrada?</div>
-      </div>
-      <div class="chat-msg lead">
-        <div class="chat-sender">João</div>
-        <div class="chat-bubble">Tenho uns R$ 18 mil</div>
-      </div>
-      <div class="chat-msg ia">
-        <div class="chat-sender">IA Sara</div>
-        <div class="chat-bubble">Ótimo! E qual sua renda mensal? CLT ou autônomo?</div>
-      </div>
-      <div class="chat-msg lead">
-        <div class="chat-sender">João</div>
-        <div class="chat-bubble">CLT, ganho R$ 3.500</div>
-      </div>
-      <div class="chat-msg ia">
-        <div class="chat-sender">IA Sara</div>
-        <div class="chat-bubble">Perfeito! Com essa renda você se qualifica para financiamento habitacional. Pretende comprar nos próximos 3, 6 ou 12 meses?</div>
-      </div>
-      <div class="chat-msg lead">
-        <div class="chat-sender">João</div>
-        <div class="chat-bubble">Quero comprar logo, tô pagando aluguel</div>
-      </div>
-    </div>
-    <div class="chat-result">
-      📊 <strong>RESULTADO:</strong> Em 10 mensagens a IA qualificou completamente o lead.<br>
-      Score: <strong style="color:var(--accent)">95/100 = LEAD QUENTE 🔥</strong><br>
-      → Vendedor notificado imediatamente com contexto completo.
-    </div>
-  </div>
-</div>
-
-<!-- MODAL: COMO FUNCIONA O SCORE -->
-<div class="modal-overlay" id="modal-score" onclick="closeOnOverlay(event, 'modal-score')">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeModal('modal-score')">✕</button>
-    <div class="modal-title">📊 Como funciona o Score</div>
-    <div class="modal-sub">Pipeline de 3 etapas: conversa → análise → classificação</div>
-    <div class="score-flow">
-      <div class="score-step">
-        <div class="score-step-icon blue">💬</div>
-        <div class="score-step-body">
-          <h4>1. IA Conversacional coleta os dados</h4>
-          <p>A primeira IA conduz a conversa e coleta: imóvel desejado, renda familiar, FGTS disponível, urgência de compra, localização, situação de crédito. Tudo armazenado no banco de dados em tempo real.</p>
-        </div>
-      </div>
-      <div class="score-step">
-        <div class="score-step-icon green">🧠</div>
-        <div class="score-step-body">
-          <h4>2. IA de Análise processa e pontua</h4>
-          <p>Ao encerrar a conversa, uma segunda IA analisa todos os dados coletados considerando: adequação de renda ao produto, capital disponível (FGTS), urgência de compra e engajamento na conversa.</p>
-          <div class="score-bar-wrap">
-            <div class="score-bar-label"><span>Renda x Produto</span><span>Peso 35%</span></div>
-            <div class="score-bar-track"><div class="score-bar-fill hot" style="width:35%"></div></div>
-          </div>
-          <div class="score-bar-wrap">
-            <div class="score-bar-label"><span>Urgência de Compra</span><span>Peso 30%</span></div>
-            <div class="score-bar-track"><div class="score-bar-fill warm" style="width:30%"></div></div>
-          </div>
-          <div class="score-bar-wrap">
-            <div class="score-bar-label"><span>FGTS / Capital</span><span>Peso 20%</span></div>
-            <div class="score-bar-track"><div class="score-bar-fill cold" style="width:20%"></div></div>
-          </div>
-          <div class="score-bar-wrap">
-            <div class="score-bar-label"><span>Engajamento</span><span>Peso 15%</span></div>
-            <div class="score-bar-track"><div class="score-bar-fill hot" style="width:15%"></div></div>
-          </div>
-        </div>
-      </div>
-      <div class="score-step">
-        <div class="score-step-icon red">🎯</div>
-        <div class="score-step-body">
-          <h4>3. Classificação automática e entrega</h4>
-          <p>Score 0–100 calculado e lead classificado. Dados salvos no Supabase e painel do vendedor atualizado instantaneamente.</p>
-          <div class="classification-chips">
-            <span class="chip-class hot">🔥 Quente — Score &gt;70 — Notificação imediata</span>
-            <span class="chip-class warm">🟡 Morno — Score 40–70 — Visível no painel</span>
-            <span class="chip-class cold">❄ Frio — Score &lt;40 — Registrado para análise</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- MODAL: CARD DO LEAD (DETALHE) -->
-<div class="modal-overlay" id="modal-lead" onclick="closeOnOverlay(event, 'modal-lead')">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeModal('modal-lead')">✕</button>
-    <div class="modal-title">Card do Lead — João Silva</div>
-    <div class="modal-sub">Vendedor vê este card ao abrir o lead no painel</div>
-
-    <div class="lead-score-display">
-      <div class="lead-score-num">95</div>
-      <div class="lead-score-info">
-        <h4>🔥 LEAD QUENTE</h4>
-        <p>Score calculado automaticamente por IA · Notificação enviada ao vendedor</p>
-      </div>
-    </div>
-
-    <div class="lead-detail-grid">
-      <div class="lead-detail-field"><label>Nome</label><value>João Silva</value></div>
-      <div class="lead-detail-field"><label>Empreendimento</label><value>Jardim Europa</value></div>
-      <div class="lead-detail-field"><label>Tipologia</label><value>2 quartos</value></div>
-      <div class="lead-detail-field"><label>Renda Mensal</label><value>R$ 3.500 · CLT</value></div>
-      <div class="lead-detail-field"><label>FGTS Disponível</label><value>R$ 18.000</value></div>
-      <div class="lead-detail-field"><label>Urgência</label><value>🔥 Comprar logo (paga aluguel)</value></div>
-      <div class="lead-detail-field"><label>Elegível financiamento</label><value>✅ Sim</value></div>
-      <div class="lead-detail-field"><label>Localização</label><value>Lauro Freitas — próximo ao empr.</value></div>
-    </div>
-
-    <div class="lead-summary-box">
-      <h4>📋 Resumo da conversa</h4>
-      <p>João demonstrou alto interesse no Jardim Europa, confirmou conhecer bem a região e mora próximo. Renda de R$ 3.500 CLT qualifica para financiamento habitacional. Possui R$ 18 mil de FGTS para entrada. Urgência máxima: quer sair do aluguel o quanto antes. Altamente engajado durante toda a conversa — respondeu todas as perguntas sem hesitação.</p>
-    </div>
-
-    <div class="lead-abordagem-box">
-      <h4>🎯 Abordagem recomendada pela IA</h4>
-      <p>Ligar no período da manhã. Iniciar destacando que ele se qualificou para o MCMV com o FGTS disponível. Reforçar o argumento de sair do aluguel e entrar num imóvel próprio com parcela similar ao que paga hoje. Oferecer agendamento de visita presencial no empreendimento.</p>
-    </div>
-
-    <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
-      <button style="flex:1;min-width:140px;background:var(--accent);color:#fff;border:none;border-radius:10px;padding:0.75rem 1rem;font-weight:700;font-size:0.85rem;cursor:pointer;">📞 Assumir Lead</button>
-      <button style="flex:1;min-width:140px;background:var(--bg-soft);color:var(--navy);border:1px solid var(--border);border-radius:10px;padding:0.75rem 1rem;font-weight:600;font-size:0.85rem;cursor:pointer;">💬 Ver conversa completa</button>
-    </div>
-  </div>
-</div>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// Intersection Observer for sections
-const sections = document.querySelectorAll('section');
+<script>
+// ===== INTERSECTION OBSERVER =====
+const sections = document.querySelectorAll('section[id]');
 const dots = document.querySelectorAll('.progress-dot');
-const observer = new IntersectionObserver((entries) => {
+
+const obs = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
       dots.forEach(d => d.classList.remove('active'));
-      const activeDot = document.querySelector(`.progress-dot[data-section="${entry.target.id}"]`);
-      if (activeDot) activeDot.classList.add('active');
+      const idx = Array.from(sections).indexOf(entry.target);
+      if (dots[idx]) dots[idx].classList.add('active');
     }
   });
-}, { threshold: 0.05, rootMargin: '0px 0px -5% 0px' });
-sections.forEach(s => observer.observe(s));
+}, { threshold: 0.3 });
 
-// Force all sections in viewport on load (fixes hero blank issue)
-window.addEventListener('load', () => {
-  sections.forEach(s => {
-    const rect = s.getBoundingClientRect();
-    if (rect.top < window.innerHeight && rect.bottom > 0) {
-      s.classList.add('visible');
+sections.forEach(s => obs.observe(s));
+dots.forEach((dot, i) => {
+  dot.addEventListener('click', () => sections[i].scrollIntoView({ behavior: 'smooth' }));
+});
+
+// ===== SCORE BAR ANIMATION =====
+const scoreObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.score-bar-fill').forEach(bar => {
+        bar.style.width = bar.dataset.width || bar.style.width;
+      });
     }
   });
-});
+}, { threshold: 0.3 });
+document.querySelectorAll('section').forEach(s => scoreObs.observe(s));
 
-// Progress dot navigation
-dots.forEach(dot => {
-  dot.addEventListener('click', () => {
-    const t = document.getElementById(dot.dataset.section);
-    if (t) t.scrollIntoView({ behavior: 'smooth' });
-  });
-});
-
-// Navbar links
-document.querySelectorAll('.navbar-links a').forEach(a => {
-  a.addEventListener('click', e => {
-    e.preventDefault();
-    const t = document.querySelector(a.getAttribute('href'));
-    if (t) t.scrollIntoView({ behavior: 'smooth' });
-  });
-});
-
-// Modal functions
+// ===== MODALS =====
 function openModal(id) {
   document.getElementById(id).classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -1001,17 +1329,73 @@ function closeModal(id) {
   document.getElementById(id).classList.remove('open');
   document.body.style.overflow = '';
 }
-function closeOnOverlay(e, id) {
-  if (e.target === e.currentTarget) closeModal(id);
-}
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeModal(overlay.id);
+  });
+});
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    document.querySelectorAll('.modal-overlay.open').forEach(m => {
-      m.classList.remove('open');
-      document.body.style.overflow = '';
-    });
-  }
+  if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.open').forEach(m => closeModal(m.id));
 });
 </script>
+<div class="modal-overlay" id="modal-capacidade">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-capacidade')">✕</button>
+    <div class="modal-title">Capacidade de Compra — Critérios e Pontuação</div>
+    <div class="modal-sub">Máximo de 60 pontos. Pontuações negativas são aplicadas quando o critério é desfavorável.</div>
+    <table class="comparison-table" style="margin-top:0.5rem">
+      <thead>
+        <tr><th>Critério</th><th>Condição</th><th style="text-align:right">Pontos</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Renda</td><td>Acima do mínimo com folga</td><td style="text-align:right;font-weight:700;color:#059669">+25</td></tr>
+        <tr><td></td><td>No limite mínimo</td><td style="text-align:right;font-weight:700;color:#D97706">+15</td></tr>
+        <tr><td></td><td>Abaixo do mínimo</td><td style="text-align:right;font-weight:700;color:var(--accent)">−20</td></tr>
+        <tr><td>Restrição de crédito</td><td>Sem restrição</td><td style="text-align:right;font-weight:700;color:#059669">+15</td></tr>
+        <tr><td></td><td>Não sabe</td><td style="text-align:right;font-weight:700;color:var(--text-dim)">0</td></tr>
+        <tr><td></td><td>Com restrição</td><td style="text-align:right;font-weight:700;color:var(--accent)">−20</td></tr>
+        <tr><td>Tipo de trabalho</td><td>Funcionário público</td><td style="text-align:right;font-weight:700;color:#059669">+15</td></tr>
+        <tr><td></td><td>CLT</td><td style="text-align:right;font-weight:700;color:#059669">+10</td></tr>
+        <tr><td></td><td>Autônomo formal (CNPJ)</td><td style="text-align:right;font-weight:700;color:#D97706">+5</td></tr>
+        <tr><td></td><td>Autônomo informal</td><td style="text-align:right;font-weight:700;color:var(--accent)">−10</td></tr>
+        <tr><td></td><td>Desempregado</td><td style="text-align:right;font-weight:700;color:var(--accent)">−20</td></tr>
+        <tr><td>Entrada (FGTS/reserva)</td><td>Tem entrada disponível</td><td style="text-align:right;font-weight:700;color:#059669">+10</td></tr>
+        <tr><td></td><td>Não sabe</td><td style="text-align:right;font-weight:700;color:var(--text-dim)">0</td></tr>
+        <tr><td></td><td>Não tem</td><td style="text-align:right;font-weight:700;color:var(--accent)">−10</td></tr>
+      </tbody>
+    </table>
+    <div style="margin-top:1rem;font-size:0.78rem;color:var(--text-dim);line-height:1.6">
+      Score final = max(0, capacidade + intenção). Pontuações negativas podem reduzir o score mas o resultado nunca é inferior a zero.
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-intencao">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-intencao')">✕</button>
+    <div class="modal-title">Intenção de Compra — Critérios e Pontuação</div>
+    <div class="modal-sub">Máximo de 40 pontos. Avalia engajamento, timing e motivação declarada.</div>
+    <table class="comparison-table" style="margin-top:0.5rem">
+      <thead>
+        <tr><th>Critério</th><th>Condição</th><th style="text-align:right">Pontos</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Timing</td><td>Quer comprar em até 3 meses</td><td style="text-align:right;font-weight:700;color:#059669">+20</td></tr>
+        <tr><td></td><td>3 a 12 meses</td><td style="text-align:right;font-weight:700;color:#D97706">+10</td></tr>
+        <tr><td></td><td>Só pesquisando</td><td style="text-align:right;font-weight:700;color:var(--text-dim)">0</td></tr>
+        <tr><td>Engajamento</td><td>Responde rápido e ativamente</td><td style="text-align:right;font-weight:700;color:#059669">+10</td></tr>
+        <tr><td></td><td>Responde pouco (SLA acima de 2h)</td><td style="text-align:right;font-weight:700;color:#D97706">+5</td></tr>
+        <tr><td></td><td>Sem resposta (SLA acima de 24h)</td><td style="text-align:right;font-weight:700;color:var(--text-dim)">0</td></tr>
+        <tr><td>Dor percebida</td><td>Forte: aluguel, urgência, filho, casamento</td><td style="text-align:right;font-weight:700;color:#059669">+5</td></tr>
+        <tr><td></td><td>Moderada: sem pressa declarada</td><td style="text-align:right;font-weight:700;color:#D97706">+3</td></tr>
+        <tr><td></td><td>Sem dor declarada</td><td style="text-align:right;font-weight:700;color:var(--text-dim)">0</td></tr>
+      </tbody>
+    </table>
+    <div style="margin-top:1rem;font-size:0.78rem;color:var(--text-dim);line-height:1.6">
+      Score final = max(0, capacidade + intenção). Pontuações negativas podem reduzir o score mas o resultado nunca é inferior a zero.
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
